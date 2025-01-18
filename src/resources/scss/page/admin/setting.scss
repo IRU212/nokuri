@@ -1,0 +1,19 @@
+.home-setting-wrap{
+    width: calc(100%);
+    margin: 0 0 20px 0;
+    border-radius: 20px;
+    background-color: azure;
+
+    .home-setting-user-container{
+        width: 100%;
+        background: #fff;
+
+        .home-setting-user-title{
+            width: 100%;
+        }
+
+        .home-setting-user-list{
+            width: 100%;
+        }
+    }
+}

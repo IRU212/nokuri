@@ -1,0 +1,54 @@
+$admin-header-icon-size: 36px;
+
+.admin-header{
+    width: 100%;
+    display: flex;
+    width: 100%;
+    padding: 16px 30px;
+    gap: 0 40px;
+    align-items: center;
+    background-color: #222;
+    color: #fff;
+
+    .admin-header-home a{
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .admin-header-link-list{
+        display: flex;
+        margin: 0 0 0 auto;
+        gap: 0 20px;
+        align-items: center;
+
+        .admin-header-link-item{
+            a{
+                color: #fff;
+            }
+        }
+    }
+
+    .admin-header-login{
+        display: flex;
+        align-items: center;
+        gap: 0 8px;
+
+        .admin-header-login-status{
+            border-radius: 50%;
+            width: $admin-header-icon-size;
+            height: $admin-header-icon-size;
+
+            img{
+                border-radius: 50%;
+                width: $admin-header-icon-size;
+                height: $admin-header-icon-size;
+                vertical-align: bottom;
+            }
+        }
+
+        .admin-header-login-name{
+
+        }
+    }
+}

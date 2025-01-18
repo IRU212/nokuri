@@ -1,0 +1,33 @@
+.user-wrap{
+    width: 100%;
+    border-radius: 20px;
+    background-color: #fff;
+
+    .user-list{
+        width: 100%;
+
+        .user-list-header{
+            width: 100%;
+
+            th{
+                text-align: left;
+                border-bottom: 1px solid #ccc;
+                padding: 10px;
+            }
+        }
+
+        .user-list-body{
+            width: 100%;
+
+            td{
+                text-align: left;
+                border-bottom: 1px solid #ccc;
+                padding: 10px;
+            }
+
+            .user-list-last-item{
+                border-bottom: none;
+            }
+        }
+    }
+}
