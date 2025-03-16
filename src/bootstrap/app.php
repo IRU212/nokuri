@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\IsAdminAuthenticated;
 use App\Http\Middleware\IsGestAuthenticated;
+use App\Http\Middleware\IsUserIsAdminAuthenticated;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -18,6 +19,9 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->prependToGroup('admin', [
             IsAdminAuthenticated::class,
+        ]);
+        $middleware->prependToGroup('user', [
+            IsUserIsAdminAuthenticated::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

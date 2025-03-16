@@ -6,8 +6,9 @@
 @use "./module/header.scss";
 @use "./module/sub_header.scss";
 // page
-@use "./page/admin/content.scss";
-@use "./page/admin/home.scss";
-@use "./page/admin/login.scss";
-@use "./page/admin/setting.scss";
-@use "./page/admin/user.scss";
+@use "./page/admin/content.scss"        as admin_content;
+@use "./page/admin/home.scss"           as admin_home;
+@use "./page/admin/login.scss"          as admin_login;
+@use "./page/admin/setting.scss"        as admin_setting;
+@use "./page/admin/user.scss"           as admin_user;
+@use "./page/user/login.scss"           as user_login;
