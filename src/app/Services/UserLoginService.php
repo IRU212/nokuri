@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 final class UserLoginService
@@ -41,5 +42,25 @@ final class UserLoginService
         Log::info("ユーザ{$user_id}のログアウトを行うためセッション削除を行います。");
 
         session(['user_id' => null]);
+    }
+
+    /**
+     * ログイン中の一般ユーザIDを取得します
+     *
+     * @return integer|null
+     */
+    public static function loginId(): int|null
+    {
+        return session('user_id');
+    }
+
+    /**
+     * ログイン中の一般ユーザモデルを取得します
+     *
+     * @return User|null
+     */
+    public static function user(): User|null
+    {
+        return User::find(self::loginId());
     }
 }

@@ -9,10 +9,13 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\HomeController as UserHomeController;
+use App\Http\Controllers\User\InquiryController;
 use App\Http\Controllers\User\LoginController as UserLoginController;
 use App\Http\Controllers\User\LogoutController as UserLogoutController;
+use App\Http\Controllers\User\RecommendationController;
 use App\Http\Controllers\User\RegisterController as UserRegisterController;
 use App\Http\Controllers\User\SocialiteLoginController;
+use App\Http\Controllers\User\WikiController;
 use Illuminate\Support\Facades\Route;
 
 // ユーザ
@@ -31,14 +34,28 @@ Route::name('user.')->group(function () {
     Route::prefix('/register')->controller(UserRegisterController::class)->name('register.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
+    // ホーム
+    Route::prefix('/')->controller(UserHomeController::class)->name('home.')->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+    // おすすめ
+    Route::prefix('/recommendation')->controller(RecommendationController::class)->name('recommendation.')->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+    // Wiki
+    Route::prefix('/wiki')->controller(WikiController::class)->name('wiki.')->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+    // お問い合わせ
+    Route::prefix('/inquiry')->controller(InquiryController::class)->name('inquiry.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/complete', 'complete')->name('complete');
+    });
     Route::middleware(['user'])->group(function () {
         // ログアウト
         Route::prefix('/logout')->controller(UserLogoutController::class)->name('logout.')->group(function () {
             Route::post('/', 'logout')->name('logout');
-        });
-        // ホーム
-        Route::prefix('/')->controller(UserHomeController::class)->name('home.')->group(function () {
-            Route::get('/', 'index')->name('index');
         });
     });
 });
