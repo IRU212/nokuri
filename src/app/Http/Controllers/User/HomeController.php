@@ -13,6 +13,8 @@ final class HomeController extends Controller
      */
     public function index(): \Illuminate\Contracts\View\View
     {
+        // dd(session('user_id'));
+
         return view('user.home.index');
     }
 }

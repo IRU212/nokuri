@@ -17,18 +17,28 @@
     min-height: 100vh;
     height: 100%;
     padding: 30px;
-    background-color: #ababab47;
+
+    .user-login-complete-wrap{
+        width: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+
+        a{
+            text-decoration: solid;
+            color: blue;
+        }
+    }
 }
 
-.user-login-header {
-    width: 80vw;
-    max-width: 80vw;
-    background-color: #fff;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 15px;
-    border-radius: 0 0 15px 15px;
+.user-login-footer{
+    width: 100%;
+    color: #fff;
+    background-color: #222;
+    padding: 20px;
 }
 
 .center{

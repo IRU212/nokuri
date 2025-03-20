@@ -12,3 +12,5 @@
 @use "./page/admin/setting.scss"        as admin_setting;
 @use "./page/admin/user.scss"           as admin_user;
 @use "./page/user/login.scss"           as user_login;
+@use "./page/user/inquiry.scss"         as user_inquiry;
+@use "./page/user/wiki.scss"            as user_wiki;

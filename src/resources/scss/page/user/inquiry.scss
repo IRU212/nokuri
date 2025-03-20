@@ -1,0 +1,35 @@
+.user-inquiry-wrap{
+    width: 80%;
+    margin: 90px auto 0 auto;
+
+    .user-inquiry-content-wrap{
+        width: 100%;
+
+        .user-inquiry-content-field{
+            width: 100%;
+            margin: 20px 0 0 0;
+
+            input{
+                width: 100%;
+                margin: 5px 0 0 0;
+                padding: 10px 20px;
+                border-radius: 8px;
+                border: 1px solid #000;
+            }
+
+            textarea{
+                width: 100%;
+                margin: 5px 0 0 0;
+                padding: 10px 20px;
+                border-radius: 8px;
+                border: 1px solid #000;
+            }
+
+            input[type=submit]{
+                cursor: pointer;
+                background-color: #333;
+                color: #fff;
+            }
+        }
+    }
+}
