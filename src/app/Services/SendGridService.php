@@ -9,14 +9,29 @@ use SendGrid\Mail\Mail;
 
 final class SendGridService
 {
+    /**
+     * @var string
+     */
     private readonly string $api_key;
 
+    /**
+     * @var string
+     */
     private readonly string $from_address;
 
+    /**
+     * @var SendGrid
+     */
     private readonly SendGrid $send_grid;
 
+    /**
+     * @var Mail
+     */
     private Mail $send_grid_mail;
 
+    /**
+     * 初期化処理
+     */
     public function __construct()
     {
         $this->api_key = '';
@@ -25,6 +40,15 @@ final class SendGridService
         $this->send_grid_mail = new Mail();
     }
 
+    /**
+     * メール送信
+     *
+     * @param string $subject
+     * @param string $to_address
+     * @param string $mail_content_path
+     * @param array $data
+     * @return void
+     */
     public function snedMail(string $subject, string $to_address, string $mail_content_path, array $data): void
     {
         $this->send_grid_mail->setFrom($this->from_address);
