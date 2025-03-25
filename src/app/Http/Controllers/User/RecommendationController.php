@@ -19,6 +19,8 @@ final class RecommendationController extends Controller
         $weather_data = $result['weather_data'];
         $work_out_list = $result['work_out_list'];
 
+        dd($result);
+
         return view('user.recommendation.index', compact('weather_data', 'work_out_list'));
     }
 }
