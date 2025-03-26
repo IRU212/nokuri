@@ -14,6 +14,7 @@ use App\Http\Controllers\User\LoginController as UserLoginController;
 use App\Http\Controllers\User\LogoutController as UserLogoutController;
 use App\Http\Controllers\User\RecommendationController;
 use App\Http\Controllers\User\RegisterController as UserRegisterController;
+use App\Http\Controllers\User\SettingController as UserSettingController;
 use App\Http\Controllers\User\SocialiteLoginController;
 use App\Http\Controllers\User\WikiController;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,11 @@ Route::name('user.')->group(function () {
         Route::get('/complete', 'complete')->name('complete');
     });
     Route::middleware(['user'])->group(function () {
+        // 設定
+        Route::prefix('/setting')->controller(UserSettingController::class)->name('setting.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/update', 'update')->name('update');
+        });
         // ログアウト
         Route::prefix('/logout')->controller(UserLogoutController::class)->name('logout.')->group(function () {
             Route::post('/', 'logout')->name('logout');

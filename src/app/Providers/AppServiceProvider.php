@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Enum\Prefecture;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\View as ViewView;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('*', function (ViewView $view) {
+            $view->with('Prefecture', Prefecture::class);
+        });
     }
 }
