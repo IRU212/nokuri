@@ -49,7 +49,7 @@ final class SendGridService
      * @param array $data
      * @return void
      */
-    public function snedMail(string $subject, string $to_address, string $mail_content_path, array $data): void
+    public function snedMail(string $subject, string $to_address, string $mail_content_path, array $data = []): void
     {
         $this->send_grid_mail->setFrom($this->from_address);
         $this->send_grid_mail->setSubject($subject);
