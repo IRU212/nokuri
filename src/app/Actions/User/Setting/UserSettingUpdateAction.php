@@ -3,6 +3,8 @@
 namespace App\Actions\User\Setting;
 
 use App\Http\Requests\User\Setting\UserSettingUpdateRequest;
+use App\Models\User;
+use App\Services\UserLoginService;
 
 final class UserSettingUpdateAction
 {
@@ -14,6 +16,8 @@ final class UserSettingUpdateAction
      */
     public function __invoke(UserSettingUpdateRequest $request): void
     {
-        // 
+        $user = User::findOrFail(UserLoginService::loginId());
+        $user->fill($request->validated());
+        $user->save();
     }
 }

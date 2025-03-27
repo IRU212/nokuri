@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedTinyInteger('prefecture')->comment('都道府県JP')->nullable()->after('icon_image');
-            $table->unsignedTinyInteger('prefecture_en')->comment('都道府県EN')->nullable()->after('icon_image');
+            $table->unsignedTinyInteger('prefecture')->comment('都道府県')->nullable()->after('icon_image');
         });
     }
 
