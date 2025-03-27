@@ -16,8 +16,7 @@ final class HomeController extends Controller
     public function index(UserHomeIndexAction $action): \Illuminate\Contracts\View\View
     {
         $result = $action();
-        $news_list = $result['news_list'];
 
-        return view('user.home.index', compact('news_list'));
+        return view('user.home.index', $result);
     }
 }

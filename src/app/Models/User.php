@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+final class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'icon_image',
         'google_id',
+        'prefecture'
     ];
 
     /**
@@ -32,6 +33,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'google_id'
     ];
 
     /**

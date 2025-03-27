@@ -18,9 +18,8 @@ final class SettingController extends Controller
     public function index(UserSettingIndexAction $action): \Illuminate\Contracts\View\View
     {
         $result = $action();
-        $user = $result['user'];
 
-        return view('user.setting.index', compact('user'));
+        return view('user.setting.index',  $result);
     }
 
     /**
@@ -33,6 +32,7 @@ final class SettingController extends Controller
     public function update(UserSettingUpdateRequest $request, UserSettingUpdateAction $action): \Illuminate\Http\RedirectResponse
     {
         $action($request);
+
         return redirect(route('user.setting.index'));
     }
 }
