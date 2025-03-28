@@ -5,13 +5,22 @@
 筋トレを行うユーザ向けのサイトで天気によっておすすめの筋トレメニューを教えたり <br />
 筋トレ用のWikiで様々な知識を蓄える事が出来ます。
 
-## URL
-ユーザ画面URL : <br />
-管理画面URL   : 
+## サーバー情報
+ユーザ画面URL : http://www.nokuri.jp/  <br />
+ドキュメントルート : ~/www/nokuri/src/public
+
+管理画面URL : http://admin.nokuri.jp/  <br />
+ドキュメントルート : ~/www/nokuri/src/admin
 
 ## バージョン
+* PHP : 8.3.8  
+* Laravel : 11
 
 ## 技術一覧
+* PHP
+* Laravel
+* JavaScript
+* Docker
 
 ## 機能一覧
 
