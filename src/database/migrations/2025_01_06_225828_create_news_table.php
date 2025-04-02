@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100)->comment('タイトル');
             $table->text('body')->comment('本文');
-            $table->unsignedTinyInteger('type')->comment('タイプ');
             $table->datetime('created_at');
             $table->dateTime('updated_at');
         });

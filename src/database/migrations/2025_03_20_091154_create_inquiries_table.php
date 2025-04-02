@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name', 100)->comment('名前');
             $table->string('email', 100)->comment('メールアドレス');
             $table->text('content', 500)->comment('内容');
+            $table->foreign('user_id')->references('user_id')->on('users')->nullable()->comment('ユーザID');
             $table->datetime('created_at');
             $table->dateTime('updated_at');
         });
