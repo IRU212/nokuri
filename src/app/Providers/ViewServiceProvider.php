@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\View\Composers\CommonComposer;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+final class ViewServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -19,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('*', CommonComposer::class);
     }
 }

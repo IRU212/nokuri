@@ -1,6 +1,6 @@
 services:
   app:
-    container_name: "api_nokuri_app"
+    container_name: "nokuri_app"
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
@@ -10,7 +10,7 @@ services:
     ports:
       - 5173:5173
   nginx:
-    container_name: "api_nokuri_nginx"
+    container_name: "nokuri_nginx"
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile

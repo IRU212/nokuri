@@ -18,27 +18,34 @@ final class SocialiteLoginCallback
     {
         $user = new User();
         $google_user = Socialite::driver('google')->user();
-
-        $user_id = null;
-        $google_user_name = $google_user->getName();
-        $google_user_email = $google_user->getEmail();
-        $google_user_avater = $google_user->getAvatar();
         $google_user_id = $google_user->getId();
 
         if ($user::where('google_id', $google_user_id)->exists()) {
-            $user_id = $user::query()->where('google_id', $google_user_id)->first()->id;
+            $user_id = $user::query()
+                ->where('google_id', $google_user_id)
+                ->whereNot('deleted_at')
+                ->first()
+                ->id;
         } else {
-            $save_data = [
-                'name' => $google_user_name,
-                'email' => $google_user_email,
-                'icon_image' => $google_user_avater,
-                'google_id' => $google_user_id,
-            ];
-            $user_id = $user->saveUser($save_data)->id;
+            $this->saveUser($google_user, $google_user_id);
         }
 
         UserLoginService::login($user_id);
 
-        Log::info("user_id:{$user_id},google_id:{$google_user_id}のユーザがログインします");
+        Log::info("user_id:{$user_id},google_id:{$google_user_id}のユーザがログインしました");
+    }
+
+    /**
+     * ユーザを登録します
+     */
+    private function saveUser(\Laravel\Socialite\Contracts\User $google_user, int $google_user_id): User
+    {
+        $user = new User();
+        $user->name = $google_user->getName();
+        $user->email = $google_user->getEmail();
+        $user->icon_image = $google_user->getAvatar();
+        $user->google_id = $google_user_id;
+        $user->save();
+        return $user;
     }
 }

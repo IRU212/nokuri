@@ -13,10 +13,8 @@ final class UserHomeIndexAction
      */
     public function __invoke(): array
     {
-        $news_list = News::query()->limit(5)->get()->toArray();
-
         return [
-            'news_list' => $news_list,
+            'news_list' => News::query()->limit(5)->get()->toArray(),
         ];
     }
 }

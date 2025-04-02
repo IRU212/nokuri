@@ -19,17 +19,4 @@ final class Inquiry extends Model
         'updated_at',
         'deleted_at',
     ];
-
-    /**
-     * お問い合わせと登録します
-     *
-     * @param array $save_data
-     * @return self
-     */
-    public function saveInquiry(array $save_data): self
-    {
-        $this->fill($save_data);
-        $this->save();
-        return $this;
-    }
 }
