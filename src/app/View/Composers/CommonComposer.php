@@ -2,6 +2,7 @@
 
 namespace App\View\Composers;
 
+use App\Enum\Gender;
 use App\Enum\Prefecture;
 use App\Repositories\UserRepository;
 use Illuminate\View\View;
@@ -14,5 +15,6 @@ final class CommonComposer
     public function compose(View $view): void
     {
         $view->with('prefecture', Prefecture::class);
+        $view->with('gender', Gender::class);
     }
 }

@@ -15,7 +15,11 @@ final class UserInquiryStoreAction
      */
     public function __invoke(UserInquiryStoreRequest $request): void
     {
-        $inquiry =  new Inquiry();
-        $inquiry->saveInquiry($request->validated());
+        $inquiry = new Inquiry();
+        $inquiry->fill($request->validated());
+        $inquiry->save();
+
+        // お問い合わせ内容をお客に送信
+        // お問い合わせ内容を会社に送信
     }
 }
