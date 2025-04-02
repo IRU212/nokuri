@@ -14,7 +14,9 @@ jobs:
     steps:
      - name: Checkout Repository
        uses: actions/checkout@v3
-     - name: Deploy
+
+     # 自動デプロイ
+     - name: develop deploy
        uses: appleboy/ssh-action@master
        with:
          host: ${{ secrets.SERVER_HOST }}
@@ -22,4 +24,12 @@ jobs:
          password: ${{ secrets.SERVER_PASS }}
          script: |
            cd ${{ secrets.SERVER_DEPLOY_DIR }}
-           git pull origin develop         
+           git pull origin develop
+
+     # データベース反映
+     - name: db migrate
+       uses: actions/checkout@v3
+       with:
+        script: |
+          cd ${{ secrets.SERVER_DEPLOY_DIR }}/src
+          php artisa migrate
