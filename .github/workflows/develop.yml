@@ -25,11 +25,3 @@ jobs:
          script: |
            cd ${{ secrets.SERVER_DEPLOY_DIR }}
            git pull origin develop
-
-     # データベース反映
-     - name: db migrate
-       uses: actions/checkout@v3
-       with:
-        script: |
-          cd ${{ secrets.SERVER_DEPLOY_DIR }}/src
-          php artisa migrate
