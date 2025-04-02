@@ -14,10 +14,9 @@ final class UserRegisterPreStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name',
-            'email',
-            'password',
-            'prefecture',
+            'name' => ['required', 'min:5', 'max:100'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'min:6', 'max:25'],
         ];
     }
 }

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Actions\User\Register\UserRegisterPreStoreAction;
+use App\Actions\User\Register\UserRegisterStoreAction;
+use App\Exceptions\MissUncertifiedUserTokenException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Register\UserRegisterPreStoreRequest;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 final class RegisterController extends Controller
 {
@@ -21,12 +23,15 @@ final class RegisterController extends Controller
 
     /**
      * ユーザの新規前登録処理を行います
-     * 
-     * @return \Illuminate\Contracts\View\View
+     *
+     * @param UserRegisterPreStoreRequest $request
+     * @param UserRegisterPreStoreAction $action
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function preStore(UserRegisterPreStoreRequest $request, UserRegisterPreStoreAction $action): \Illuminate\Http\RedirectResponse
     {
         $action($request);
+
         return redirect(route('user.register.pre_complete'));
     }
 
@@ -43,10 +48,19 @@ final class RegisterController extends Controller
     /**
      * ユーザの新規登録を行います
      *
+     * @param string $token
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(): \Illuminate\Http\RedirectResponse
+    public function store(string $token, UserRegisterStoreAction $action): \Illuminate\Http\RedirectResponse
     {
+        try {
+            $action($token);
+        } catch (MissUncertifiedUserTokenException $e) {
+            Log::error($e->getMessage());
+            session()->flash('user_miss_register_message', $e->getMessage());
+            return redirect(route('user.register.index'));
+        }
+
         return redirect(route('user.home.index'));
     }
 }

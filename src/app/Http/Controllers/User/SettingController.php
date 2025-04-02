@@ -33,6 +33,8 @@ final class SettingController extends Controller
     {
         $action($request);
 
+        $this->setFlashMessage('setting_update_message', 'アカウント情報の更新が完了しました。');
+
         return redirect(route('user.setting.index'));
     }
 }

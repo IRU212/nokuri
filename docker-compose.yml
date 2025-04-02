@@ -21,3 +21,11 @@ services:
       - app
     ports:
       - 80:80
+  mailhog:
+    image: mailhog/mailhog
+    platform: 'linux/amd64'
+    ports:
+      - target: 8025
+        published: ${MAILHOG_PUBLISHED_PORT:-8025}
+        protocol: tcp
+        mode: host

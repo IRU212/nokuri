@@ -2,18 +2,12 @@
 
 namespace App\Http\Requests\User\Setting;
 
+use App\Enum\Prefecture;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
-class UserSettingUpdateRequest extends FormRequest
+final class UserSettingUpdateRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,7 +16,9 @@ class UserSettingUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'min:5', 'max:100'],
+            'email' => ['required', 'email', 'exists:users,email'],
+            'prefecture' => ['nullable', new Enum(Prefecture::class)]
         ];
     }
 }
