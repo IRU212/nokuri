@@ -25,4 +25,5 @@ jobs:
          script: |
            cd ${{ secrets.SERVER_DEPLOY_DIR }}
            git pull origin develop
+           cd ${{ secrets.SERVER_DEPLOY_DIR }}/src
            php artisan migrate
