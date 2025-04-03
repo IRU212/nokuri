@@ -25,13 +25,4 @@ jobs:
          script: |
            cd ${{ secrets.SERVER_DEPLOY_DIR }}
            git pull origin develop
-
-     # PHPバージョン
-     - name: php version
-       run: php --version
-
-     # データベース反映
-     - name: db migrate
-       run: |
-         cd ${{ secrets.SERVER_DEPLOY_DIR }}/src
-         php artisa migrate
+           php artisa migrate
