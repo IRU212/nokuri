@@ -37,3 +37,14 @@ jobs:
         script: |
           cd ${{ secrets.SERVER_DEPLOY_DIR }}/src
           php artisa migrate
+
+     # Nodeインストール
+     - name: Set up Node.js
+       uses: actions/setup-node@v2
+       with:
+        node-version: '16'
+
+     # ビルドコマンドを実行
+     - name: Run npm run build
+       run: |
+        npm run build
