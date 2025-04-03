@@ -4,7 +4,6 @@ namespace Database\Seeders\Production;
 
 use App\Models\WorkOut;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 final class ProductionWorkOutSeeder extends Seeder
 {
