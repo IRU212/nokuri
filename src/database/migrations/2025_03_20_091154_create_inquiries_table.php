@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('user_id')->on('users')->nullable()->comment('ユーザID');
             $table->datetime('created_at');
             $table->dateTime('updated_at');
+            $table->comment('問い合わせ');
         });
-        DB::statement("ALTER TABLE inquiries COMMENT = '問い合わせ'");
     }
 
     /**

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreign('user_id')->unique()->references('user_id')->on('users')->nullable()->comment('ユーザID');
             $table->foreign('admin_user_id')->unique()->references('admin_user_id')->on('admin_users')->nullable()->comment('管理者ユーザID');
+            $table->comment('連携ユーザ');
         });
-        DB::statement("ALTER TABLE associate_users COMMENT = '連結ユーザ'");
     }
 
     /**

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->datetime('created_at')->comment('作成日時');
             $table->dateTime('updated_at')->comment('更新日時');
             $table->dateTime('deleted_at')->nullable()->comment('削除日時');
+            $table->comment('筋トレメニュー');
         });
-        DB::statement("ALTER TABLE work_outs COMMENT = '筋トレメニュー'");
     }
 
     /**

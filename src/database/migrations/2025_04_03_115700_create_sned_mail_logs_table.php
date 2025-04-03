@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('error_message')->comment('メール送信失敗時のメッセージ');
             $table->dateTime('send_time_at')->comment('メール送信日時');
             $table->dateTime('created_at')->comment('作成日時');
+            $table->comment('送信メールログ');
         });
     }
 

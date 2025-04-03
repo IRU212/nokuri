@@ -26,8 +26,8 @@ return new class extends Migration
             $table->datetime('created_at');
             $table->dateTime('updated_at');
             $table->dateTime('deleted_at')->nullable();
+            $table->comment('一般ユーザ');
         });
-        DB::statement("ALTER TABLE users COMMENT = '一般ユーザ'");
     }
 
     /**

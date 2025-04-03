@@ -20,6 +20,7 @@ return new class extends Migration
             $table->datetime('created_at');
             $table->dateTime('updated_at');
             $table->dateTime('token_deadline_at');
+            $table->comment('未認証ユーザ');
         });
     }
 

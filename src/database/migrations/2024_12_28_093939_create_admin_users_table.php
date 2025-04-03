@@ -25,8 +25,8 @@ return new class extends Migration
             $table->datetime('created_at');
             $table->dateTime('updated_at');
             $table->dateTime('deleted_at')->nullable();
+            $table->comment('管理者ユーザ');
         });
-        DB::statement("ALTER TABLE admin_users COMMENT = '管理者ユーザ'");
     }
 
     /**

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('body')->comment('本文');
             $table->datetime('created_at');
             $table->dateTime('updated_at');
+            $table->comment('お知らせ');
         });
-        DB::statement("ALTER TABLE news COMMENT = 'お知らせ'");
     }
 
     /**
