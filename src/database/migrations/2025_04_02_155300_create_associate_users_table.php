@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('associate_users', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->unique()->references('user_id')->on('users')->nullable()->comment('ユーザID');
-            $table->foreign('admin_user_id')->unique()->references('admin_user_id')->on('admin_users')->nullable()->comment('管理者ユーザID');
+            $table->foreignId('user_id')->constrained()->nullable()->comment('ユーザID');
+            $table->foreignId('admin_user_id')->constrained()->nullable()->comment('管理者ユーザID');
             $table->comment('連携ユーザ');
         });
     }

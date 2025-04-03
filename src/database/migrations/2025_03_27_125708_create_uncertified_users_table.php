@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('uncertified_users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('password');
-            $table->string('token');
+            $table->string('name')->comment('名前');
+            $table->string('email')->comment('メールアドレス');
+            $table->string('password')->comment('パスワード');
+            $table->string('token')->comment('トークン');
             $table->datetime('created_at')->comment('作成日時');
             $table->dateTime('updated_at')->comment('更新日時');
             $table->dateTime('token_deadline_at')->comment('トークン制限日時');
