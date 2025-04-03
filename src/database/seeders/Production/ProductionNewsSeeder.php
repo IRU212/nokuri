@@ -3,9 +3,7 @@
 namespace Database\Seeders\Production;
 
 use App\Models\News;
-use App\Models\WorkOut;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 final class ProductionNewsSeeder extends Seeder
 {
@@ -15,7 +13,7 @@ final class ProductionNewsSeeder extends Seeder
     public function run(): void
     {
         $params = [
-            ['id' => 1, 'name' => 'サイトリリース記念', 'body' => 'サイトリリースする事が無事できました！'],
+            ['id' => 1, 'title' => 'サイトリリース記念', 'body' => 'サイトリリースする事が無事できました！'],
         ];
         News::upsert($params, ['id'], ['updated_at']);
     }
