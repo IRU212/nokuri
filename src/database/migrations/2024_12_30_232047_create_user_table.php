@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->mediumInteger('google_id')->unique()->nullable()->comment('グーグルID');
             $table->string('name', 50)->comment('名前');
-            $table->string('nickname', 50)->nullable()->comment('ニック名前');
+            $table->string('nickname', 50)->nullable()->comment('ニックネーム');
             $table->string('email')->unique()->comment('メールアドレス');
             $table->string('password')->nullable()->comment('パスワード');
             $table->string('icon_image')->nullable()->comment('アイコン画像');
