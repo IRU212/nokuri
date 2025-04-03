@@ -29,6 +29,6 @@ final class ProductionWorkOutSeeder extends Seeder
             ['id' => 13, 'name' => 'ラテラルレイズマシン', 'is_exercise_equipment' => true, 'is_bodyweight' => false],
             ['id' => 14, 'name' => 'ペクトラルフライマシン', 'is_exercise_equipment' => true, 'is_bodyweight' => false],
         ];
-        WorkOut::upsert($params);
+        WorkOut::upsert($params, ['id'], ['updated_at']);
     }
 }

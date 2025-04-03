@@ -17,6 +17,6 @@ final class ProductionNewsSeeder extends Seeder
         $params = [
             ['id' => 1, 'name' => 'サイトリリース記念', 'body' => 'サイトリリースする事が無事できました！'],
         ];
-        News::upsert($params);
+        News::upsert($params, ['id'], ['updated_at']);
     }
 }
