@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     - name: Checkout Repository
+     - name: checkout Repository
        uses: actions/checkout@v3
 
      # 自動デプロイ
@@ -32,17 +32,6 @@ jobs:
 
      # データベース反映
      - name: db migrate
-       uses: actions/checkout@v3
-       with:
-        script: |
-          cd ${{ secrets.SERVER_DEPLOY_DIR }}/src
-          php artisa migrate
-
-     # ビルドコマンドを実行
-     - name: run npm run build
-       uses: actions/setup-node@v2
-       with:
-        node-version: '16'
-        script: |
-          cd ${{ secrets.SERVER_DEPLOY_DIR }}/src
-          npm run build
+       run: |
+         cd ${{ secrets.SERVER_DEPLOY_DIR }}/src
+         php artisa migrate
