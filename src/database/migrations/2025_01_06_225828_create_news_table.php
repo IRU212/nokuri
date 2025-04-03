@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title', 100)->comment('タイトル');
             $table->text('body')->comment('本文');
-            $table->datetime('created_at');
-            $table->dateTime('updated_at');
+            $table->datetime('created_at')->comment('作成日時');
+            $table->dateTime('updated_at')->comment('削除日時');
             $table->comment('お知らせ');
         });
     }

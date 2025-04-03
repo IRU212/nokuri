@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('token');
-            $table->datetime('created_at');
-            $table->dateTime('updated_at');
-            $table->dateTime('token_deadline_at');
+            $table->datetime('created_at')->comment('作成日時');
+            $table->dateTime('updated_at')->comment('更新日時');
+            $table->dateTime('token_deadline_at')->comment('トークン制限日時');
             $table->comment('未認証ユーザ');
         });
     }
