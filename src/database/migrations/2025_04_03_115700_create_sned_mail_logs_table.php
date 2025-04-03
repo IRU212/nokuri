@@ -23,7 +23,6 @@ return new class extends Migration
             $table->dateTime('send_time_at')->comment('メール送信日時');
             $table->dateTime('created_at')->comment('作成日時');
         });
-        DB::statement("ALTER TABLE sned_mail_logs COMMENT = '送信メールログ'");
     }
 
     /**
