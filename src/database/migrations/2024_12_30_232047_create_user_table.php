@@ -3,7 +3,6 @@
 use App\Enum\UserStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -21,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique()->comment('メールアドレス');
             $table->string('password')->nullable()->comment('パスワード');
             $table->string('icon_image')->nullable()->comment('アイコン画像');
-            $table->unsignedTinyInteger('prefecture')->comment('都道府県')->nullable()->after('icon_image');
+            $table->unsignedTinyInteger('prefecture')->nullable()->comment('都道府県');
             $table->unsignedTinyInteger('status')->default(UserStatus::ACTIVE)->comment('ステータス');
             $table->datetime('created_at');
             $table->dateTime('updated_at');
