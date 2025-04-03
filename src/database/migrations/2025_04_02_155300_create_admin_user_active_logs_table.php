@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('type')->comment('タイプ');
             $table->string('description', 255)->comment('説明');
             $table->foreign('admin_user_id')->unique()->references('admin_user_id')->on('admin_users')->nullable()->comment('管理者ユーザID');
-        })
+        });
         DB::statement("ALTER TABLE admin_user_logs COMMENT = '管理ユーザログ'");
     }
 
