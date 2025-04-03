@@ -3,18 +3,26 @@
 namespace App\Actions\User\Register;
 
 use App\Http\Requests\User\Register\UserRegisterPreStoreRequest;
-use App\Models\User;
+use App\Mail\UserAuthenticationMail;
+use App\Models\UncertifiedUser;
+use Illuminate\Support\Facades\Mail;
 
 final class UserRegisterPreStoreAction
 {
+    /**
+     * 未認証ユーザを作成します
+     *
+     * @param UserRegisterPreStoreRequest $request
+     * @return void
+     */
     public function __invoke(UserRegisterPreStoreRequest $request): void
     {
-        $user = new User();
-        $user->is_uncertified = true;
-        $user->fill($request->validated());
-        $user->save();
+        $uncertified_user = new UncertifiedUser();
+        $uncertified_user->fill($request->validated());
+        $uncertified_user->token_deadline_at = now()->addMinute(30);
+        $uncertified_user->token = bin2hex(random_bytes(16));
+        $uncertified_user->save();
 
-        // メールDBを作成します
-        // メール送信をします
+        Mail::send(new UserAuthenticationMail($uncertified_user));
     }
 }

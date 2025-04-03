@@ -4,6 +4,7 @@
         <div><a href="{{ route('user.recommendation.index') }}">おすすめ</a></div>
         <div><a href="{{ route('user.wiki.index') }}">Wiki</a></div>
         <div><a href="{{ route('user.inquiry.index') }}">お問い合わせ</a></div>
+        <div><a href="{{ route('user.setting.index') }}">設定</a></div>
     </div>
     <div class="user-login-auth-contain">
         @if ($is_user_login_in)

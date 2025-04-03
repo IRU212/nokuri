@@ -34,6 +34,9 @@ Route::name('user.')->group(function () {
     // 新規登録
     Route::prefix('/register')->controller(UserRegisterController::class)->name('register.')->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::post('/pre_store', 'preStore')->name('pre_store');
+        Route::get('/pre_complete', 'preComplete')->name('pre_complete');
+        Route::get('/store/{token}', 'store')->name('store');
     });
     // ホーム
     Route::prefix('/')->controller(UserHomeController::class)->name('home.')->group(function () {

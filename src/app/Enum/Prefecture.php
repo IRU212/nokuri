@@ -4,6 +4,7 @@ namespace App\Enum;
 
 enum Prefecture: int
 {
+    case NONE = 0;
     case HOKKAIDO = 1;
     case AOMORI = 2;
     case IWATE = 3;
@@ -60,6 +61,7 @@ enum Prefecture: int
     public function label(): string
     {
         return match ($this) {
+            self::NONE => '未設定',
             self::HOKKAIDO => '北海道',
             self::AOMORI => '青森県',
             self::IWATE => '岩手県',
