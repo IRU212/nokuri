@@ -67,7 +67,7 @@ return [
 
         'daily' => [
             'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
+            'path' => storage_path("logs/nokuri.log"),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => env('LOG_DAILY_DAYS', 14),
             'replace_placeholders' => true,
@@ -127,6 +127,12 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'error' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/nokuri_error.log'),
+            'level' => 'error',
+            'days' => 14,
+        ],
     ],
 
 ];
