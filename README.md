@@ -14,16 +14,11 @@
 
 ## バージョン
 * PHP : 8.3.8  
-* Laravel : 11
+* Laravel : 11.36.1
 
 ## 技術一覧
 * PHP
 * Laravel
 * JavaScript
 * Docker
-
-## 機能一覧
-
-## ER図
-
-## インフラ構成図
+* Github Action

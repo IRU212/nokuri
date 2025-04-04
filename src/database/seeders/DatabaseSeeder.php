@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Production\ProductionAdminUserSeeder;
 use Database\Seeders\Production\ProductionNewsSeeder;
 use Database\Seeders\Production\ProductionWorkOutSeeder;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
         // 共通データ
         $seeder_call_list[] = ProductionWorkOutSeeder::class;
         $seeder_call_list[] = ProductionNewsSeeder::class;
+        $seeder_call_list[] = ProductionAdminUserSeeder::class;
 
         if (App::environment('local')) {
             //
