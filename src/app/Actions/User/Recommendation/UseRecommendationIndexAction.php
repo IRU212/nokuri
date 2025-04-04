@@ -18,7 +18,7 @@ final class UseRecommendationIndexAction
     {
         $work_out = new WorkOut();
         $user = UserLoginService::user();
-        $prefecture = $user->prefecture;
+        $prefecture = $user?->prefecture;
 
         if ($prefecture === null) {
             return [

@@ -19,4 +19,14 @@ final class UserInquiryStoreRequest extends FormRequest
             'content' => ['required', 'string', 'max:500'],
         ];
     }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [];
+    }
 }

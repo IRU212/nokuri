@@ -3,7 +3,9 @@
 namespace App\Actions\User\Inquiry;
 
 use App\Http\Requests\User\Inquiry\UserInquiryStoreRequest;
+use App\Mail\UserInquiryThanksMail;
 use App\Models\Inquiry;
+use Illuminate\Support\Facades\Mail;
 
 final class UserInquiryStoreAction
 {
@@ -19,7 +21,6 @@ final class UserInquiryStoreAction
         $inquiry->fill($request->validated());
         $inquiry->save();
 
-        // お問い合わせ内容をお客に送信
-        // お問い合わせ内容を会社に送信
+        Mail::send(new UserInquiryThanksMail($inquiry));
     }
 }

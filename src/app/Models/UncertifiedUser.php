@@ -24,6 +24,6 @@ final class UncertifiedUser extends Model
      * @var list<string>
      */
     protected $hidden = [
-        // 'password',
+        'password',
     ];
 }
