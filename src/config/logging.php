@@ -133,6 +133,14 @@ return [
             'level' => 'error',
             'days' => 14,
         ],
+
+        // バッチ用
+        'generate-google-drive-file-user-data' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/generate-google-drive-file-user-data/bath.log'),
+            'level' => 'info',
+            'days' => 14,
+        ],
     ],
 
 ];
