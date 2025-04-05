@@ -45,6 +45,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->prependToGroup('user', [
             IsUserIsAdminAuthenticated::class,
         ]);
+
+        $middleware->alias([
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+    ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
