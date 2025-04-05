@@ -31,7 +31,7 @@ final class GenerateGoogleDriveFileUserData extends Command
     public function handle()
     {
         $now = now()->format('Y-m-d');
-        $file_name = "ユーザ一覧_4{$now}.xlsx";
+        $file_name = "ユーザ一覧_{$now}.xlsx";
         $saved_file_path = storage_path("app/private/{$file_name}");
         Excel::store(new UserExport, $file_name);
 
