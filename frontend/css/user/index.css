@@ -1,0 +1,139 @@
+*{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+/* 
+*
+* ↑ リセットCSS
+*
+*/
+
+header{
+    width: 100%;
+    padding: 6px 20px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #ccc;
+}
+header .main-nav{
+    width: fit-content;
+    margin: 0 0 0 auto;
+}
+header .main-nav ul{
+    display: flex;
+    justify-content: center;
+}
+header .main-nav ul li{
+    list-style: none;
+}
+header .title{
+    width: fit-content;
+}
+header .hamburger{
+    position: fixed;
+    top: -4px;
+    right: 14px;
+    z-index: 100;
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: none;
+}
+
+header .hamburger .hamburger__line{
+    position: absolute;
+    left: 11px;
+    width: 26px;
+    height: 2px;
+    background-color: #333;
+    transition: all .4s;
+}
+
+header .hamburger .hamburger__line:nth-of-type(1) {
+    top: 14px;
+}
+header .hamburger .hamburger__line:nth-of-type(2) {
+    top: 23px;
+}
+header .hamburger .hamburger__line:nth-of-type(3) {
+    top: 32px;
+}
+
+/* メニューオープン時 */
+.hamburger.active .hamburger__line:nth-of-type(1) {
+    transform: translateY(9px) rotate(-45deg);
+}
+header .hamburger.active .hamburger__line:nth-of-type(2) {
+    opacity: 0;
+}
+header .hamburger.active .hamburger__line:nth-of-type(3) {
+    transform: translateY(-9px) rotate(45deg);
+}
+header .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 2px 0 4px rgba(0,0,0,.1);
+    transform: translateX(-100%);
+    transition: transform .4s;
+    z-index: 90;
+}
+  
+header .nav.active {
+    transform: translateX(0);
+}
+  
+header .nav__list {
+    margin: 0;
+    padding: 100px 0 0;
+    list-style: none;
+}
+  
+header .nav__item {
+    padding: 0 20px;
+}
+  
+header .nav__link {
+    display: block;
+    padding: 15px 0;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+
+/* 959px以下に適用されるCSS（タブレット用） */
+@media screen and (max-width: 959px) {
+
+    header .main-nav{
+        display: none;
+    }
+    header .hamburger{
+        display: block;
+    }
+
+}
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+
+    header .main-nav{
+        display: none;
+    }
+    header .hamburger{
+        display: block;
+    }
+
+}
