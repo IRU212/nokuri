@@ -8,7 +8,11 @@
     <meta http-equiv="Content-Language" content="ja">
     <title>Nokuri</title>
     <link rel="stylesheet" href="../../css/user/index.css">
-    <script src="../../js/user/index.js"></script>
+    <script src="../../js/user/index.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -23,6 +27,12 @@
                 <li><a href="">設定</a></li>
             </ul>
         </nav>
+        <nav class="auth-nav">
+            <ul>
+                <li><a href="">SignUp</a></li>
+                <li><a href="">SignIn</a></li>
+            </ul>
+        </nav>
         <button class="hamburger" aria-label="メニュー" aria-controls="nav-menu" aria-expanded="false">
             <span class="hamburger__line"></span>
             <span class="hamburger__line"></span>
@@ -30,16 +40,55 @@
         </button>
         <nav id="nav-menu" class="nav" aria-hidden="true">
             <ul class="nav__list">
-              <li class="nav__item"><a href="#" class="nav__link">ホーム</a></li>
-              <li class="nav__item"><a href="#" class="nav__link">about</a></li>
-              <li class="nav__item"><a href="#" class="nav__link">サービス</a></li>
-              <li class="nav__item"><a href="#" class="nav__link">お問い合わせ</a></li>
+              <li class="nav__item"><a href="#" class="nav__link">目次</a></li>
+              <li class="nav__item"><a href="#" class="nav__link">おすすめの頻度</a></li>
+              <li class="nav__item"><a href="#" class="nav__link">おすすめの筋トレ</a></li>
+              <li class="nav__item"><a href="#" class="nav__link">おすすめの栄養素</a></li>
+              <li class="nav__item"><a href="#" class="nav__link">Wiki</a></li>
+              <li class="nav__item"><a href="#" class="nav__link">設定</a></li>
             </ul>
         </nav>
     </header>
     <main>
-
+        <ul class="home__menu__container" id="slide-wrapper">
+            <li class="home__menu__slider__img_block" id="indicator">
+                <img src="../../img/test.webp" alt="画像1">
+            </li>
+            <li class="home__menu__slider__img_block">
+                <img src="../../img/test.webp" alt="画像2">
+            </li>
+            <li class="home__menu__slider__img_block">
+                <img src="../../img/test.webp" alt="画像3">
+            </li>
+        </ul>
+        <section class="home__news__container">
+            <h3 class="title">お知らせ</h3>
+            <ul class="news__list">
+                <li class="news__card">
+                    <div class="news__item__date">2024/12/31</div>
+                    <div class="news__item__content">タイトル</div>
+                </li>
+                <li class="news__card">
+                    <div class="news__item__date">2024/12/31</div>
+                    <div class="news__item__content">タイトル</div>
+                </li>
+                <li class="news__card">
+                    <div class="news__item__date">2024/12/31</div>
+                    <div class="news__item__content">タイトル</div>
+                </li>
+                <li class="news__card">
+                    <div class="news__item__date">2024/12/31</div>
+                    <div class="news__item__content">タイトル</div>
+                </li>
+                <li class="news__card">
+                    <div class="news__item__date">2024/12/31</div>
+                    <div class="news__item__content">タイトル</div>
+                </li>
+            </div>
+        </section>
     </main>
-    <footer></footer>
+    <footer>
+        <h2 class="title">Nokuriで常に健康に</h2>
+    </footer>
 </body>
 </html>
