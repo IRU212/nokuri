@@ -11,7 +11,7 @@ use App\Http\Controllers\User\SocialiteLoginController;
 use App\Http\Controllers\User\WikiController;
 use Illuminate\Support\Facades\Route;
 
-Route::name('user.')->group(function () {
+Route::middleware('user')->name('user.')->group(function () {
     Route::prefix('/auth/google')->controller(SocialiteLoginController::class)->name('socialite.auth.')->group(function () {
         Route::get('/redirect', 'redirect')->name('redirect');
         Route::get('/callback', 'callback')->name('callback');
@@ -37,13 +37,11 @@ Route::name('user.')->group(function () {
         Route::post('/store', 'store')->name('store');
         Route::get('/complete', 'complete')->name('complete');
     });
-    Route::middleware(['user'])->group(function () {
-        Route::prefix('/setting')->controller(SettingController::class)->name('setting.')->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::post('/update', 'update')->name('update');
-        });
-        Route::prefix('/logout')->controller(LogoutController::class)->name('logout.')->group(function () {
-            Route::post('/', 'logout')->name('logout');
-        });
+    Route::prefix('/setting')->controller(SettingController::class)->name('setting.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/update', 'update')->name('update');
+    });
+    Route::prefix('/logout')->controller(LogoutController::class)->name('logout.')->group(function () {
+        Route::post('/', 'logout')->name('logout');
     });
 });

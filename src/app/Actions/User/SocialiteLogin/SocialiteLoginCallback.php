@@ -23,7 +23,7 @@ final class SocialiteLoginCallback
         if ($user::where('google_id', $google_user_id)->exists()) {
             $user_id = $user::query()
                 ->where('google_id', $google_user_id)
-                ->whereNot('deleted_at')
+                ->where('deleted_at', null)
                 ->first()
                 ->id;
         } else {

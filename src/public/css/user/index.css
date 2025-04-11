@@ -1,0 +1,343 @@
+*{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+img{
+    vertical-align: bottom;
+}
+
+li{
+    list-style: none;
+}
+
+input{
+    display: block;
+}
+
+/* 
+*
+* ↑ リセットCSS
+*
+*/
+
+header{
+    width: 100%;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background-color: #000;
+}
+header .main-nav{
+    width: fit-content;
+    margin: auto 0 auto auto;
+}
+header .main-nav ul{
+    display: flex;
+    justify-content: center;
+}
+header .main-nav ul li{
+    width: fit-content;
+    margin: auto 16px;
+}
+header .main-nav ul li a{
+    width: fit-content;
+    font-weight: 600;
+    color: #fff;
+}
+header .title{
+    width: fit-content;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+header .title a{
+    color: #fff;
+}
+header .auth-nav{
+    width: fit-content;
+    margin: auto 0 auto auto;
+}
+header .auth-nav ul{
+    display: flex;
+    justify-content: center;
+}
+header .auth-nav ul li{
+    width: fit-content;
+    margin: auto 8px;
+    border-radius: 8px;
+}
+header .auth-nav ul li a{
+    width: fit-content;
+    border: 1px solid #fff;
+    padding: 4px 10px;
+    font-weight: 600;
+    color: #fff;
+    display: block;
+}
+header .hamburger{
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translate(0, -50%);
+    z-index: 100;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: none;
+}
+
+header .hamburger .hamburger__line{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 26px;
+    height: 2px;
+    background-color: #fff;
+    transition: all .4s;
+}
+
+header .hamburger .hamburger__line:nth-of-type(1) {
+    top: 10px;
+}
+header .hamburger .hamburger__line:nth-of-type(2) {
+    top: 18px;
+}
+header .hamburger .hamburger__line:nth-of-type(3) {
+    top: 26px;
+}
+
+/* メニューオープン時 */
+.hamburger.active .hamburger__line:nth-of-type(1) {
+    transform: translateY(8px) rotate(-45deg);
+}
+header .hamburger.active .hamburger__line:nth-of-type(2) {
+    opacity: 0;
+}
+header .hamburger.active .hamburger__line:nth-of-type(3) {
+    transform: translateY(-8px) rotate(45deg);
+}
+header .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 2px 0 4px rgba(0,0,0,.1);
+    transform: translateX(-100%);
+    transition: transform .4s;
+    z-index: 90;
+}
+  
+header .nav.active {
+    transform: translateX(0);
+}
+  
+header .nav__list {
+    margin: 0;
+    padding: 100px 0 0;
+    list-style: none;
+}
+  
+header .nav__item {
+    padding: 0 20px;
+}
+  
+header .nav__link {
+    display: block;
+    padding: 15px 0;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+
+main {
+    padding: 30px 0 30px 0;
+    background-color: #222;
+}
+
+main .home__menu__container{
+    width: 90vw;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+}
+
+main .home__menu__container .home__menu__slider__img_block {
+    contain: layout;
+    width: fit-content;
+    height: content;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+main .home__menu__container .home__menu__slider__img_block:nth-of-type(2) {
+    margin: 0 30px;
+}
+
+main .home__menu__container .home__menu__slider__img_block img {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    border-radius: 20px;
+}
+
+main .home__news__container{
+    width: 90vw;
+    margin: 30px auto 0 auto;
+}
+
+main .home__news__container .title {
+    color: #ffff;
+}
+main .home__news__container .news__list {
+    margin: 20px 0 0 0;
+}
+main .home__news__container .news__list .news__card {
+    display: flex;
+    color: #fff;
+    margin: 0 0 10px 0;
+    padding: 0 0 12px 0;
+    border-bottom: 1px solid #fff;
+}
+main .home__news__container .news__list .news__card .news__item__date {
+    width: fit-content;
+    margin: 0 30px 0 0;
+}
+
+main .gest__container {
+    width: 90vw;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    color: #fff;
+}
+main .gest__container .field__group {
+    width: 100%;
+    padding: 40px;
+}
+main .gest__container .field__group .guidance__group {
+    margin: 30px 0 0 0;
+}
+main .gest__container .field__group .guidance__group .guidance_link {
+    display: block;
+    color: #fff;
+    margin: 15px 0 0 0;
+}
+main .gest__container .field__group .field {
+    margin: 0 0 20px 0;
+}
+main .gest__container .field__group .field input {
+    margin: 6px 0 0 0;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+}display_password
+main .gest__container .field__group .field #displayPasswordButton {
+    width: fit-content;
+}
+main .gest__container .field__group button {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 16px 0 0 0;
+    background-color: #fff;
+    cursor: pointer;
+}
+main .gest__container .social__group {
+    width: 100%;
+    padding: 40px;
+}
+main .gest__container .social__group .social__button {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+main .gest__container .social__group .social__button {
+    display: block;
+    margin: 0 0 20px 0;
+    color: #fff;
+}
+
+main .gest-title{
+    display: block;
+    width: fit-content;
+    margin: 30px auto;
+    color: #fff;
+}
+
+footer {
+    background-color: #111;
+    padding: 30px 0;
+    color: #fff;
+}
+footer .title {
+    margin: 0 auto;
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+/* 959px以下に適用されるCSS（タブレット用） */
+@media screen and (max-width: 959px) {
+
+    header .main-nav{
+        display: none;
+    }
+    header .auth-nav{
+        display: none;
+    }
+    header .hamburger{
+        display: block;
+    }
+    main .home__menu__container .home__menu__slider__img_block:nth-of-type(2) {
+        margin: 30px 0;
+    }
+    main .gest__container {
+        display: block;
+    }
+
+}
+
+/* 480px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 480px) {
+
+    header .main-nav{
+        display: none;
+    }
+    header .auth-nav{
+        display: none;
+    }
+    header .hamburger{
+        display: block;
+    }
+    main .home__menu__container {
+        display: block;
+    }
+    main .home__menu__container .home__menu__slider__img_block img {
+        width: 90vw;
+        height: 90vw;
+    }
+    main .home__menu__container .home__menu__slider__img_block:nth-of-type(2) {
+        margin: 30px 0;
+    }
+    main .gest__container{
+        display: block;
+    }
+
+}

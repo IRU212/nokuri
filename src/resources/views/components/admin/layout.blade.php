@@ -8,9 +8,7 @@
     <meta name="author" content="okajima">
     <meta http-equiv="Content-Language" content="ja">
     <title>{{ $title }}</title>
-    @vite(['resources/scss/app.scss'])
-    <!-- OGP -->
-    <!-- Twitterカード -->
+    <link rel="stylesheet" href="{{ asset('/css/user/index.css') }}">
 </head>
 </head>
 
