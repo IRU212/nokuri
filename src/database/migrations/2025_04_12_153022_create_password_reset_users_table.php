@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('banners', function (Blueprint $table) {
+        Schema::create('password_reset_users', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->comment('画像');
-            $table->unsignedTinyInteger('sort')->comment('並び順');
+            $table->foreignId('user_id')->constrained()->nullable()->comment('ユーザID');
+            $table->string('email')->comment('メールアドレス');
+            $table->string('token')->comment('トークン');
+            $table->dateTime('token_deadline_at')->comment('トークン制限日時');
             $table->datetime('created_at')->comment('作成日時');
             $table->dateTime('updated_at')->comment('更新日時');
-            $table->comment('バナー');
+            $table->comment('パスワードリセットユーザ');
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banners');
+        Schema::dropIfExists('password_reset_users');
     }
 };

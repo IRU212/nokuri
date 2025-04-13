@@ -1,19 +1,29 @@
+<?php
+
+$header_list = [
+    ['link' => '', 'label' => '目次'],
+    ['link' => '', 'label' => 'おすすめの頻度'],
+    ['link' => '', 'label' => 'おすすめの筋トレ'],
+    ['link' => '', 'label' => 'おすすめの栄養素'],
+    ['link' => '', 'label' => 'Wiki'],
+    ['link' => route('user.setting.index'), 'label' => '設定'],
+];
+
+?>
+
 <header>
     <h3 class="title"><a href="{{ route('user.home.index') }}" aria-label="TOPへ移動">Nokuri</a></h1>
     <nav class="main-nav">
         <ul>
-            <li><a href="">目次</a></li>
-            <li><a href="">おすすめの頻度</a></li>
-            <li><a href="">おすすめの筋トレ</a></li>
-            <li><a href="">おすすめの栄養素</a></li>
-            <li><a href="">Wiki</a></li>
-            <li><a href="">設定</a></li>
+            @foreach ($header_list as $header_item)
+                <li><a href="{{ $header_item['link'] }}">{{ $header_item['label'] }}</a></li>
+            @endforeach
         </ul>
     </nav>
     <nav class="auth-nav">
         @if ($is_user_login_in === true)
             <ul>
-                <li>{{ $user->name }}</li>
+                <li class="user-name">{{ $user->name }}</li>
             </ul>
         @endif
         @if ($is_user_login_in === false)
@@ -30,12 +40,9 @@
     </button>
     <nav id="nav-menu" class="nav" aria-hidden="true">
         <ul class="nav__list">
-            <li class="nav__item"><a href="#" class="nav__link">目次</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">おすすめの頻度</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">おすすめの筋トレ</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">おすすめの栄養素</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">Wiki</a></li>
-            <li class="nav__item"><a href="#" class="nav__link">設定</a></li>
+            @foreach ($header_list as $header_item)
+                <li class="nav__item"><a href="{{ $header_item['link'] }}" class="nav__link">{{ $header_item['label'] }}</a></li>
+            @endforeach
         </ul>
     </nav>
 </header>

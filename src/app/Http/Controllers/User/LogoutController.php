@@ -13,7 +13,7 @@ final class LogoutController extends Controller
      * @param UserLogoutAction $action
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function logout(UserLogoutAction $action): \Illuminate\Http\RedirectResponse
+    public function store(UserLogoutAction $action): \Illuminate\Http\RedirectResponse
     {
         $action();
 

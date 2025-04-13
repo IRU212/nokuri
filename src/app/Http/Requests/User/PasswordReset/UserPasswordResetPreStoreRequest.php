@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\User\Login;
+namespace App\Http\Requests\User\PasswordReset;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class UserLoginAuthRequest extends FormRequest
+final class UserPasswordResetPreStoreRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -14,8 +14,7 @@ final class UserLoginAuthRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email', 'exists:users,email'],
-            'password' => ['required', 'min:6', 'max:25'],
+            'email' => ['required', 'exists:users,email']
         ];
     }
 }

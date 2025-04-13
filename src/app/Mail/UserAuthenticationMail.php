@@ -42,7 +42,7 @@ final class UserAuthenticationMail extends Mailable
         return new Content(
             view: 'mail.user_authentication',
             with: [
-                'token' => $this->uncertified_user->token
+                'uncertified_user' => $this->uncertified_user
             ],
         );
     }
