@@ -5,6 +5,7 @@ use App\Http\Controllers\User\InquiryController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\LogoutController;
 use App\Http\Controllers\User\PasswordResetController;
+use App\Http\Controllers\User\PrivacyPolicyController;
 use App\Http\Controllers\User\RecommendationController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\SettingController;
@@ -36,6 +37,7 @@ Route::middleware('user')->name('user.')->group(function () {
     Route::prefix('/')->controller(HomeController::class)->name('home.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
+    Route::prefix('privacy_policy', PrivacyPolicyController::class)->name('privacy_policy');
     Route::prefix('/recommendation')->controller(RecommendationController::class)->name('recommendation.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
