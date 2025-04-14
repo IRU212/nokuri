@@ -1,29 +1,34 @@
 <x-user.layout :title="$title" :description="$description">
-    <main class="user-login-body">
-        <section class="user-login-wrap">
-            <form action="">
-                <div class="user-login-wrap-item user-login-icon-list">
-                    <a href="{{ route('user.socialite.auth.redirect') }}" class="user-login-icon-item">
-                        <img src="{{ asset('img/icon/google.png') }}" alt="">
+    <x-user.header />
+    <main>
+        <x-common.flash_message name="message" />
+        <h2 class="gest-title">アカウントログイン</h2>
+        <section class="gest__container">
+            <div class="field__group">
+                <form action="{{ route('user.login.auth') }}" method="POST">
+                    @csrf
+                    <div class="field">
+                        <label>メールアドレス</label>
+                        <input type="email" name="email" value="">
                     </div>
+                    <div class="field">
+                        <label>パスワード</label>
+                        <input type="password" name="password" value="" id="inputPassword">
+                    </div>
+                    <button type="submit">ログイン</button>
+                </form>
+                <div class="guidance__group">
+                    <a href="{{ route('user.password_reset.index') }}" class="guidance_link">パスワードを忘れた方はこちら</a>
+                    <a href="{{ route('user.register.index') }}" class="guidance_link">新規会員登録の方はこちら</a>
                 </div>
-                <div class="user-login-wrap-item">
-                    <div class="user-login-field">
-                        <label for="">メールアドレス</label>
-                        <input type="text">
-                    </div>
-                    <div class="user-login-field">
-                        <label for="">パスワード</label>
-                        <input type="password">
-                    </div>
-                    <div class="user-login-field">
-                        <input type="submit" value="ログイン">
-                    </div>
-                </div>
-            </form>
-            <div class="user-login-wrap-item">
-                <a href="">新規登録はこちら</a>
+            </div>
+            <div class="social__group">
+                <a href="{{ route('user.socialite.auth.redirect') }}" class="social__button">Googleでログイン</a>
+                <a href="" class="social__button">LINEでログイン</a>
+                <a href="" class="social__button">Yahoo JAPAN IDでログイン</a>
+                <a href="" class="social__button">Facebookでログイン</a>
             </div>
         </section>
     </main>
+    <x-user.footer />
 </x-admin.layout>

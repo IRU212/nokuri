@@ -6,6 +6,7 @@ use App\Actions\User\Login\UserLoginAuthAction;
 use App\Exceptions\MissLoginForNonePassword;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Login\UserLoginAuthRequest;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log;
 
 final class LoginController extends Controller
@@ -34,9 +35,16 @@ final class LoginController extends Controller
     {
         try {
             $action($request);
+        } catch (ModelNotFoundException $e) {
+            Log::warning($e->getMessage());
+            $this->setFlashMessage('message', 'アカウントが削除されているので問い合わせしてください');
+
+            return redirect(route('user.login.index'));
         } catch (MissLoginForNonePassword $e) {
             Log::warning($e->getMessage());
-            return view(route('user.login.index'));
+            $this->setFlashMessage('message', 'ソーシャルアカウントでログインしてください');
+
+            return redirect(route('user.login.index'));
         }
 
         return redirect(route('user.home.index'));

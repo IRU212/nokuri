@@ -6,6 +6,7 @@ enum UserStatus: int
 {
     case INACTIVE = 0;
     case ACTIVE = 1;
+    case RESET = 2;
 
     /**
      * ラベル
@@ -17,6 +18,7 @@ enum UserStatus: int
         return match ($this) {
             self::INACTIVE => '非アクティブ',
             self::ACTIVE => 'アクティブ',
+            self::RESET => 'パスワードリセット',
         };
     }
 }

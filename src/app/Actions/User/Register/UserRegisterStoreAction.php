@@ -2,7 +2,7 @@
 
 namespace App\Actions\User\Register;
 
-use App\Exceptions\MissUncertifiedUserTokenException;
+use App\Exceptions\MissTokenException;
 use App\Models\UncertifiedUser;
 use App\Models\User;
 use App\Services\UserLoginService;
@@ -22,7 +22,7 @@ final class UserRegisterStoreAction
     public function __invoke(string $token): void
     {
         if (\mb_strlen($token) !== self::TOKEN_LENGTH) {
-            throw new MissUncertifiedUserTokenException(self::BAD_REQUEST_MESSAGE);
+            throw new MissTokenException(self::BAD_REQUEST_MESSAGE);
         }
 
         $uncertified_user = new UncertifiedUser();
@@ -30,7 +30,7 @@ final class UserRegisterStoreAction
         $uncertified_user_where_token = $uncertified_user->where('token', $token);
         
         if ($uncertified_user_where_token->where('token_deadline_at', '<', now()->addMinute(-30))->exists()) {
-            throw new MissUncertifiedUserTokenException(self::BAD_REQUEST_MESSAGE);
+            throw new MissTokenException(self::BAD_REQUEST_MESSAGE);
         }
 
         $uncertified_user_where_token->delete();

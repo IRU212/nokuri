@@ -16,6 +16,7 @@ class AccessMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        Log::info('log start');
         Log::info("アクセスログ : " . print_r([
             'ip' => $request->ip(),
             'user_agent' => $request->header('User-Agent'),

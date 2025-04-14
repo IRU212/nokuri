@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function hamburgerMenu() {
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('.nav');
-  
+
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         nav.classList.toggle('active');
@@ -18,7 +18,7 @@ function hamburgerMenu() {
         hamburger.setAttribute('aria-expanded', isOpen);
         nav.setAttribute('aria-hidden', !isOpen);
     });
-  
+
     // メニューの外側をクリックした時の処理
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.nav') && !e.target.closest('.hamburger') && nav.classList.contains('active')) {
@@ -32,4 +32,15 @@ function hamburgerMenu() {
 
 function slideShow() {
 
+}
+
+function showPasswordClick() {
+    var inputPasswordType = document.getElementById("inputPassword");
+
+    if (inputPasswordType.type == 'password') {
+        inputPasswordType.type = 'text';
+    }
+    if (inputPasswordType.type == 'text') {
+        inputPasswordType.type = 'password';
+    }
 }

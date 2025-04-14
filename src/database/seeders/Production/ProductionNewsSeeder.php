@@ -14,6 +14,7 @@ final class ProductionNewsSeeder extends Seeder
     {
         $params = [
             ['id' => 1, 'title' => 'サイトリリース記念', 'body' => 'サイトリリースする事が無事できました！'],
+            ['id' => 2, 'title' => '協同開発者募集', 'body' => '一緒にチーム開発の勉強を行いませんか？'],
         ];
         News::upsert($params, ['id'], ['updated_at']);
     }

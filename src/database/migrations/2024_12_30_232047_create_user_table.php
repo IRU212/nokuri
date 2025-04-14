@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->mediumInteger('google_id')->unique()->nullable()->comment('グーグルID');
+            $table->string('google_id')->unique()->nullable()->comment('グーグルID');
             $table->string('name', 50)->comment('名前');
             $table->string('nickname', 50)->nullable()->comment('ニックネーム');
             $table->string('email')->unique()->comment('メールアドレス');

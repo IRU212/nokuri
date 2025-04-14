@@ -14,12 +14,12 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
         then: function () {
-            Route::domain('www.' . env('APP_DOMAIN'))->group(base_path('routes/user.php'));
+            Route::domain(env('APP_DOMAIN'))->group(base_path('routes/user.php'));
             Route::domain('admin.' . env('APP_DOMAIN'))->group(base_path('routes/admin.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->group('web', [
+        $middleware->group('user', [
             \Illuminate\Cookie\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
@@ -34,16 +34,6 @@ return Application::configure(basePath: dirname(__DIR__))
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             // 'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        ]);
-
-        $middleware->prependToGroup('gest', [
-            IsGestAuthenticated::class,
-        ]);
-        $middleware->prependToGroup('admin', [
-            IsAdminAuthenticated::class,
-        ]);
-        $middleware->prependToGroup('user', [
-            IsUserIsAdminAuthenticated::class,
         ]);
 
         $middleware->alias([

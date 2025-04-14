@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Actions\User\Register\UserRegisterPreStoreAction;
 use App\Actions\User\Register\UserRegisterStoreAction;
-use App\Exceptions\MissUncertifiedUserTokenException;
+use App\Exceptions\MissTokenException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Register\UserRegisterPreStoreRequest;
 use Illuminate\Support\Facades\Log;
@@ -55,9 +55,8 @@ final class RegisterController extends Controller
     {
         try {
             $action($token);
-        } catch (MissUncertifiedUserTokenException $e) {
+        } catch (MissTokenException $e) {
             Log::error($e->getMessage());
-            session()->flash('user_miss_register_message', $e->getMessage());
             return redirect(route('user.register.index'));
         }
 
