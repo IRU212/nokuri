@@ -22,7 +22,7 @@
     RewriteCond %{HTTP_HOST} ^example\.com$ [NC]
     RewriteRule ^(.*)$ http://www.example.com/$1 [L,R=301]
 
-    AuthUserFile "/www/nokuri/src/public/.htpasswd"
+    AuthUserFile "home/nokuri/www/nokuri/src/public/.htpasswd"
     AuthName "Please enter your ID and Password." 
     AuthType BASIC 
     require valid-user 
