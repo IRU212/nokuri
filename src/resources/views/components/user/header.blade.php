@@ -1,16 +1,3 @@
-<?php
-
-$header_list = [
-    ['link' => '', 'label' => '目次'],
-    ['link' => '', 'label' => 'おすすめの頻度'],
-    ['link' => '', 'label' => 'おすすめの筋トレ'],
-    ['link' => '', 'label' => 'おすすめの栄養素'],
-    ['link' => '', 'label' => 'Wiki'],
-    ['link' => route('user.setting.index'), 'label' => '設定'],
-];
-
-?>
-
 <header>
     <h3 class="title"><a href="{{ route('user.home.index') }}" aria-label="TOPへ移動">Nokuri</a></h1>
     <nav class="main-nav">
@@ -41,7 +28,16 @@ $header_list = [
     <nav id="nav-menu" class="nav" aria-hidden="true">
         <ul class="nav__list">
             @foreach ($header_list as $header_item)
-                <li class="nav__item"><a href="{{ $header_item['link'] }}" class="nav__link">{{ $header_item['label'] }}</a></li>
+                @if ($header_item['is_guest_display'] == false && $is_user_login_in == true)
+                    <li class="nav__item">
+                        <a href="{{ $header_item['link'] }}" class="nav__link">{{ $header_item['label'] }}</a>
+                    </li>
+                @endif
+                @if ($header_item['is_guest_display'] == true)
+                    <li class="nav__item">
+                        <a href="{{ $header_item['link'] }}" class="nav__link">{{ $header_item['label'] }}</a>
+                    </li>
+                @endif
             @endforeach
         </ul>
     </nav>
