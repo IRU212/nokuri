@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\AdminLoginService;
+use App\Services\UserLoginService;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsAdminAuthenticated
+class EnsureGestOfUser
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class IsAdminAuthenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (AdminLoginService::is_login() === false) {
-            return redirect(route('admin.login.index'));
+        if (UserLoginService::is_login()) {
+            return redirect(route('user.home.index'));
         }
 
         return $next($request);

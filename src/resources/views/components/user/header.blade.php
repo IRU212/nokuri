@@ -1,11 +1,6 @@
 <?php
 
 $header_list = [
-    ['link' => '', 'label' => '目次'],
-    ['link' => '', 'label' => 'おすすめの頻度'],
-    ['link' => '', 'label' => 'おすすめの筋トレ'],
-    ['link' => '', 'label' => 'おすすめの栄養素'],
-    ['link' => '', 'label' => 'Wiki'],
     ['link' => route('user.setting.index'), 'label' => '設定'],
 ];
 
