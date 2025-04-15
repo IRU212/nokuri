@@ -22,3 +22,8 @@
 * JavaScript
 * Docker
 * Github Action
+
+## SNS
+* X(Twitter) - https://x.com/nokuri_main
+* メールアドレス - nokuri.mail@gmail.com
+* Qiita - https://qiita.com/nokuri

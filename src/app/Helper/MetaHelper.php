@@ -19,20 +19,30 @@ final class MetaHelper
         $this->app_name = config('app.name');
     }
 
+    /**
+     * meta タイトル
+     * 
+     * @return string
+     */
     public function title(): string
     {
         return match ($this->route_name) {
-            'user.home.index'           => "{$this->app_name}の筋肉筋トレサイト - TOP",
-            'user.login.index'          => "{$this->app_name}の筋肉筋トレサイト - ログイン",
-            'user.register.index'       => "{$this->app_name}の筋肉筋トレサイト - 新規登録",
-            'user.recommendation.index' => "{$this->app_name}の筋肉筋トレサイト - おすすめ",
-            'user.wiki.index'           => "{$this->app_name}の筋肉筋トレサイト - Wiki",
-            'user.inquiry.index'        => "{$this->app_name}の筋肉筋トレサイト - 問い合わせ",
-            'user.setting.index'        => "{$this->app_name}の筋肉筋トレサイト - 設定",
-            default                     => "{$this->app_name}の筋肉筋トレサイト",
+            'user.home.index'           => "{$this->app_name}の筋肉 - TOP",
+            'user.login.index'          => "{$this->app_name}の筋肉 - ログイン",
+            'user.register.index'       => "{$this->app_name}の筋肉 - 新規登録",
+            'user.recommendation.index' => "{$this->app_name}の筋肉 - おすすめ",
+            'user.wiki.index'           => "{$this->app_name}の筋肉 - Wiki",
+            'user.inquiry.index'        => "{$this->app_name}の筋肉 - 問い合わせ",
+            'user.setting.index'        => "{$this->app_name}の筋肉 - 設定",
+            default                     => "{$this->app_name}の筋肉",
         };
     }
 
+    /**
+     * meta 説明文
+     * 
+     * @return string
+     */
     public function description(): string
     {
         return match ($this->route_name) {
