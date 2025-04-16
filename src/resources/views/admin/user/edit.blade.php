@@ -7,14 +7,8 @@
                 <h3 class="mb-4 h4 font-weight-bolder">ユーザ 編集</h3>
                 <form action="" method="post">
                     <x-common.form.input_text class="input-group input-group-outline mb-4" name="name" label="ユーザ名" value="{{ $user->name }}" />
-                    <div class="input-group input-group-outline mb-4">
-                        <label class="form-label">メールアドレス</label>
-                        <input type="email" name="email" value="{{ $user->email }}" class="form-control">
-                    </div>
-                    <div class="input-group input-group-outline mb-4">
-                        <label class="form-label">パスワード</label>
-                        <input type="text" name="password" placeholder="パスワードは表示されません" class="form-control">
-                    </div>
+                    <x-common.form.input_text class="input-group input-group-outline mb-4" name="email" label="メールアドレス" value="{{ $user->email }}" />
+                    <x-common.form.input_text class="input-group input-group-outline mb-4" name="password" label="パスワード" value="{{ $user->password }}" />
                     <div class="input-group input-group-static mb-4">
                         <label for="exampleFormControlSelect1" class="ms-0">出身都道府県</label>
                         <select name="prefecture" class="form-control" id="exampleFormControlSelect1">
