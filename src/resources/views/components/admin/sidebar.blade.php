@@ -7,7 +7,7 @@
     <div class=" w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active bg-gradient-dark text-white" href="">
+          <a class="nav-link active bg-gradient-dark text-white" href="{{ route('admin.home.index') }}">
             <i class="material-symbols-rounded opacity-5">dashboard</i>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
