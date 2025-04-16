@@ -4,9 +4,9 @@ namespace App\Enum;
 
 enum UserStatus: int
 {
-    case INACTIVE = 0;
     case ACTIVE = 1;
     case RESET = 2;
+    case DELETED = 3;
 
     /**
      * ラベル
@@ -16,9 +16,9 @@ enum UserStatus: int
     public function label(): string
     {
         return match ($this) {
-            self::INACTIVE => '非アクティブ',
             self::ACTIVE => 'アクティブ',
             self::RESET => 'パスワードリセット',
+            self::DELETED => '削除済み',
         };
     }
 }

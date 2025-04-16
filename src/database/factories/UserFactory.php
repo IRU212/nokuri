@@ -21,8 +21,9 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->email(),
-            'password' => Hash::make(fake()->text(6)),
-            'status' => UserStatus::INACTIVE,
+            'password' => Hash::make('password0'),
+            'status' => rand(1, 3),
+            'prefecture_id' => rand(1, 48),
         ];
     }
 }
