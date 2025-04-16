@@ -3,7 +3,7 @@
 <div
     @class([
         $class, 
-        'is-filled' => isset($value)
+        'is-filled' => !empty($value)
     ]) 
 >
     <label class="form-label">{{ $label }}</label>
