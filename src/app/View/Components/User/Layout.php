@@ -38,6 +38,6 @@ final class Layout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.layout');
+        return view('components.user.layout');
     }
 }
