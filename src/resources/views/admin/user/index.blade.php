@@ -20,7 +20,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $user)
+                                        @foreach ($user_list_paginate as $user)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
