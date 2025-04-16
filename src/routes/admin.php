@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('admin.')->group(function () {
+    // ゲスト
     // 通常
     Route::prefix('/')->name('home.')->controller(HomeController::class)->group(function() {
         Route::get('/', 'index')->name('index');

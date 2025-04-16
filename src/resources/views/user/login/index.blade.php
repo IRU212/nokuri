@@ -24,9 +24,6 @@
             </div>
             <div class="social__group">
                 <a href="{{ route('user.socialite.auth.redirect') }}" class="social__button">Googleでログイン</a>
-                <a href="" class="social__button">LINEでログイン</a>
-                <a href="" class="social__button">Yahoo JAPAN IDでログイン</a>
-                <a href="" class="social__button">Facebookでログイン</a>
             </div>
         </section>
     </main>

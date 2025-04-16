@@ -2,6 +2,8 @@
 
 namespace App\Actions\Admin\Home;
 
+use App\Models\User;
+
 final class AdminHomeIndexAction
 {
     /**
@@ -11,6 +13,8 @@ final class AdminHomeIndexAction
      */
     public function __invoke(): array
     {
-        return [];
+        return [
+            'user_count' => User::query()->select("id")->where("deleted_at", null)->sum("id"),
+        ];
     }
 }

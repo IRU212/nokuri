@@ -11,10 +11,11 @@ use App\Http\Controllers\User\SocialiteLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('user')->name('user.')->group(function () {
+    // 共通
     Route::prefix('/')->controller(HomeController::class)->name('home.')->group(function () {
         Route::get('/', 'index')->name('index');
     });
-    Route::prefix('privacy_policy', PrivacyPolicyController::class)->name('privacy_policy');
+    Route::prefix('/privacy_policy', PrivacyPolicyController::class)->name('privacy_policy');
 
     // ユーザが未ログイン
     Route::middleware('ensure_gest_of_user')->group(function() {

@@ -23,7 +23,6 @@ return new class extends Migration
             $table->unsignedTinyInteger('height')->nullable()->comment('身長');
             $table->unsignedTinyInteger('weight')->nullable()->comment('体重');
             $table->unsignedTinyInteger('gender')->nullable()->comment('性別');
-            $table->unsignedInteger('user_role_id')->nullable()->comment('権限');
             $table->unsignedTinyInteger('status')->default(UserStatus::ACTIVE)->comment('ステータス');
             $table->string('google_id')->unique()->nullable()->comment('グーグルID');
             $table->datetime('created_at')->comment('作成日時');

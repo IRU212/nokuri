@@ -15,6 +15,6 @@ final class HomeController extends Controller
      */
     public function index(AdminHomeIndexAction $action): \Illuminate\Contracts\View\View
     {
-        return view('admin.home.index');
+        return view('admin.home.index', $action());
     }
 }
