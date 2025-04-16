@@ -20,7 +20,6 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('/css/material-dashboard.css?v=3.2.0') }}" rel="stylesheet" />
 </head>
-</head>
 
 <body>
     {{ $slot }}
