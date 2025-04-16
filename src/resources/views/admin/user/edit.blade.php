@@ -8,15 +8,15 @@
                 <form action="" method="post">
                     <div class="input-group input-group-outline mb-4">
                         <label class="form-label">ユーザ名</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" value="{{ $user->name }}" class="form-control">
                     </div>
                     <div class="input-group input-group-outline mb-4">
                         <label class="form-label">メールアドレス</label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" value="{{ $user->email }}" class="form-control">
                     </div>
                     <div class="input-group input-group-outline mb-4">
                         <label class="form-label">パスワード</label>
-                        <input type="text" name="password" class="form-control">
+                        <input type="text" name="password" placeholder="パスワードは表示されません" class="form-control">
                     </div>
                     <div class="input-group input-group-static mb-4">
                         <label for="exampleFormControlSelect1" class="ms-0">出身都道府県</label>
@@ -32,15 +32,15 @@
                     </div>
                     <div class="input-group input-group-outline mb-4">
                         <label class="form-label">年齢</label>
-                        <input type="text" name="age" class="form-control">
+                        <input type="text" name="age" value="{{ $user->age }}" class="form-control">
                     </div>
                     <div class="input-group input-group-outline mb-4">
                         <label class="form-label">身長</label>
-                        <input type="text" name="age" class="form-control">
+                        <input type="text" name="height" value="{{ $user->height }}" class="form-control">
                     </div>
                     <div class="input-group input-group-outline mb-4">
                         <label class="form-label">体重</label>
-                        <input type="text" name="age" class="form-control">
+                        <input type="text" name="weight" value="{{ $user->weight }}" class="form-control">
                     </div>
                     <div class="input-group input-group-static mb-4">
                         <label for="exampleFormControlSelect1" class="ms-0">性別</label>

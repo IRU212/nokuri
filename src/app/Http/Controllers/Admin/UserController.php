@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Actions\Admin\User\AdminUserIndexAction;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 final class UserController extends Controller
 {
@@ -34,6 +35,6 @@ final class UserController extends Controller
      */
     public function edit(int $id): \Illuminate\Contracts\View\View
     {
-        return view('admin.user.edit');
+        return view('admin.user.edit', ['user' => User::query()->findOrFail($id)]);
     }
 }

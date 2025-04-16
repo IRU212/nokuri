@@ -2,6 +2,8 @@
 
 namespace App\Enum;
 
+use App\Enum\Layout\LayoutButtonColor;
+
 enum UserStatus: int
 {
     case ACTIVE = 1;
