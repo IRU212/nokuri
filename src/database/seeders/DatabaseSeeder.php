@@ -32,10 +32,6 @@ class DatabaseSeeder extends Seeder
         if (App::environment('staging')) {
             $seeder_call_list[] = UserSeeder::class;
         }
-        // 本番
-        if (App::environment('producton')) {
-            //
-        }
 
         $this->call($seeder_call_list);
     }

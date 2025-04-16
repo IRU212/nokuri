@@ -37,13 +37,13 @@
                                                     <p class="text-xs text-secondary mb-0">{{ $user->role }}</p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-success">{{ $user->status }}</span>
+                                                    <span class="badge badge-sm bg-gradient-success">{{ $user->status->label() }}</span>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at }}</span>
+                                                    <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at->format('Y-m-d') }}</span>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <a href="{{ $user->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
+                                                    <a href="{{ route('admin.user.edit', ['id' => $user->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
                                                 </td>
                                             </tr>
                                         @endforeach
