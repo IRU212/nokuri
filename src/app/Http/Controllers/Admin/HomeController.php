@@ -15,12 +15,6 @@ final class HomeController extends Controller
      */
     public function index(AdminHomeIndexAction $action): \Illuminate\Contracts\View\View
     {
-        $result = $action();
-
-        $title = 'nokuri | 管理ホーム';
-        $description = '管理ホーム画面となります';
-        $news_list = $result['news_list'];
-
-        return view('admin.home.index', compact('title', 'description', 'news_list'));
+        return view('admin.home.index');
     }
 }
