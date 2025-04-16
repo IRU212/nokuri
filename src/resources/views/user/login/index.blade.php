@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ $meta->description }}">
+    <meta name="description" content="">
     <meta name="author" content="okajima">
     <meta http-equiv="Content-Language" content="ja">
-    <title>{{ $meta->title }}</title>
+    <title></title>
     <link rel="shortcut icon" href="{{ asset('/img/icon/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('/css/user/index.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
