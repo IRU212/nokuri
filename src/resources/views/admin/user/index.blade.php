@@ -28,24 +28,22 @@
                                                             <img src="{{ asset('/img/team-2.jpg') }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
                                                         </div>
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ $user['name'] }}</h6>
-                                                            <p class="text-xs text-secondary mb-0">{{ $user['email'] }}</p>
+                                                            <h6 class="mb-0 text-sm">{{ $user->name }}</h6>
+                                                            <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <p class="text-xs text-secondary mb-0">{{ $user['role'] }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ $user->role }}</p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    <span class="badge badge-sm bg-gradient-success">{{ $user['status'] }}</span>
+                                                    <span class="badge badge-sm bg-gradient-success">{{ $user->status }}</span>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <span class="text-secondary text-xs font-weight-bold">{{ $user['created_at'] }}</span>
+                                                    <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at }}</span>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                                    Edit
-                                                    </a>
+                                                    <a href="{{ $user->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
                                                 </td>
                                             </tr>
                                         @endforeach

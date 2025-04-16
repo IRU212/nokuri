@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
 
         // ローカル
         if (App::environment('local')) {
-            //
+            $seeder_call_list[] = UserSeeder::class;
         }
         // ステージング
         if (App::environment('staging')) {
-            //
+            $seeder_call_list[] = UserSeeder::class;
         }
         // 本番
         if (App::environment('producton')) {
