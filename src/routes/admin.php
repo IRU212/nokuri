@@ -11,6 +11,8 @@ Route::name('admin.')->group(function () {
     });
     Route::prefix('/user')->name('user.')->controller(UserController::class)->group(function() {
         Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/{id}', 'edit')->name('edit');
     });
     // マスタデータ
     // アカウント
