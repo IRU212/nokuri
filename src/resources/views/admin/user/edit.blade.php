@@ -6,10 +6,7 @@
             <div class="ms-3">
                 <h3 class="mb-4 h4 font-weight-bolder">ユーザ 編集</h3>
                 <form action="" method="post">
-                    <div class="input-group input-group-outline mb-4">
-                        <label class="form-label">ユーザ名</label>
-                        <input type="text" name="name" value="{{ $user->name }}" class="form-control">
-                    </div>
+                    <x-common.form.input_text class="input-group input-group-outline mb-4" name="name" label="ユーザ名" value="{{ $user->name }}" />
                     <div class="input-group input-group-outline mb-4">
                         <label class="form-label">メールアドレス</label>
                         <input type="email" name="email" value="{{ $user->email }}" class="form-control">
