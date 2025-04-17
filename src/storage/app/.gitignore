@@ -1,5 +1,4 @@
 *
 !private/
 !public/
-!seeder_data/
 !.gitignore
