@@ -13,7 +13,7 @@ final class ProductionWorkOutSeeder extends Seeder
      */
     public function run(): void
     {
-        $csv_sevice = new CsvService(storage_path('seeders/data/work_out.csv'));
+        $csv_sevice = new CsvService(storage_path('seeder_data/data/work_out.csv'));
         $csv_data_list_arr = $csv_sevice->convertFileToArray();
 
         foreach ($csv_data_list_arr as $csv_data_arr) {
