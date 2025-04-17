@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 100)->comment('種目名');
             $table->unsignedTinyInteger('is_exercise_equipment')->default(0)->comment('運動器具');
             $table->unsignedTinyInteger('is_bodyweight')->default(0)->comment('自重');
+            $table->unsignedTinyInteger('main_specific_area')->comment('主に鍛えられる場所');
             $table->datetime('created_at')->comment('作成日時');
             $table->dateTime('updated_at')->comment('更新日時');
             $table->dateTime('deleted_at')->nullable()->comment('削除日時');

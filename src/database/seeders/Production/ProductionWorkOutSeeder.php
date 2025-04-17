@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Production;
 
+use App\Enum\SpecificArea;
 use App\Models\WorkOut;
 use App\Services\CsvService;
 use Illuminate\Database\Seeder;
@@ -22,6 +23,7 @@ final class ProductionWorkOutSeeder extends Seeder
                 'name'                  => $csv_data_arr[1],
                 'is_exercise_equipment' => $csv_data_arr[2],
                 'is_bodyweight'         => $csv_data_arr[3],
+                'main_specific_area'    => SpecificArea::getIdFromLabel($csv_data_arr[4]),
             ]);
         }
     }
