@@ -39,10 +39,10 @@ final class SummaryUserDailyData extends Command
         $user_daily_summary = new UserDailySummary();
 
         $user_daily_summary->create([
-            'register_count'            => $user->query()->whereDate('created_at', now()->today())->count(),
-            'register_user_ids_json'     => $user->query()->select(['id'])->whereDate('created_at', now()->today())->toJson(),
-            'deleted_count'             => $user->query()->whereDate('deleted_at', now()->today())->count(),
-            'deleted_user_ids_json'      => $user->query()->select(['id'])->whereDate('deleted_at', now()->today())->toJson(),
+            'register_count'             => $user->query()->whereDate('created_at', now()->today())->count(),
+            'register_user_ids_json'     => $user->query()->select('id')->whereDate('created_at', today())->get()->toJson(),
+            'deleted_count'              => $user->query()->whereDate('deleted_at', now()->today())->count(),
+            'deleted_user_ids_json'      => $user->query()->select('id')->whereDate('deleted_at', today())->get()->toJson(),
         ]);
 
         Log::channel($this->signature)->info("bath log end");
