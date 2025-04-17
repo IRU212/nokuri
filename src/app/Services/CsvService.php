@@ -4,8 +4,6 @@ namespace App\Services;
 
 final class CsvService
 {
-    private const HEADER_SPLICE_INDEX = 1;
-
     private readonly string $file_path;
 
     private readonly string $file_content;
@@ -22,7 +20,7 @@ final class CsvService
         $result = [];
 
         if ($is_cut_header) {
-            \array_splice($file_content_array_list, self::HEADER_SPLICE_INDEX);
+            $file_content_array_list = \array_shift($file_content_array_list);
         }
         foreach ($file_content_array_list as $file_content_array_item) {
             $result[] = \explode(",", $file_content_array_item);
