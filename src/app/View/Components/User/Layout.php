@@ -40,4 +40,10 @@ final class Layout extends Component
     {
         return view('components.user.layout');
     }
+
+    public function addTimeStamp(string $path): string
+    {
+        $timestamp = now()->format('YmdHis');
+        return "{$path}?{$timestamp}";
+    }
 }

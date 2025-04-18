@@ -379,6 +379,13 @@ main .work-out__container .work-out__group .work-out__card .work-out__card__desc
     -webkit-line-clamp: 4;
 }
 
+main .setting__group{
+    width: 90vw;
+    height: 100%;
+    margin: 0 auto;
+    color: #fff;
+}
+
 footer {
     width: 100%;
     height: 100px;
