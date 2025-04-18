@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('register_user_ids_json')->comment('登録ユーザID一覧JSON');
             $table->integer('deleted_count')->comment('削除数');
             $table->string('deleted_user_ids_json')->comment('登録ユーザID一覧JSON');
-            $table->datetime('created_at')->comment('作成日時');
+            $table->datetime('created_at')->useCurrent()->comment('作成日時');
             $table->comment('ユーザ毎日集計数');
         });
     }

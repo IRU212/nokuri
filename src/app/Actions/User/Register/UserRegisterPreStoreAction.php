@@ -3,9 +3,8 @@
 namespace App\Actions\User\Register;
 
 use App\Http\Requests\User\Register\UserRegisterPreStoreRequest;
-use App\Mail\UserAuthenticationMail;
+use App\Jobs\UserAuthenticationJob;
 use App\Models\UncertifiedUser;
-use Illuminate\Support\Facades\Mail;
 
 final class UserRegisterPreStoreAction
 {
@@ -23,6 +22,6 @@ final class UserRegisterPreStoreAction
         $uncertified_user->token = bin2hex(random_bytes(16));
         $uncertified_user->save();
 
-        Mail::send(new UserAuthenticationMail($uncertified_user));
+        UserAuthenticationJob::dispatch($uncertified_user);
     }
 }
