@@ -8,11 +8,15 @@ use App\Http\Controllers\User\PrivacyPolicyController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\SettingController;
 use App\Http\Controllers\User\SocialiteLoginController;
+use App\Http\Controllers\User\WorkOutController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('user')->name('user.')->group(function () {
     // 共通
     Route::prefix('/')->controller(HomeController::class)->name('home.')->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+    Route::prefix('/work_out')->controller(WorkOutController::class)->name('work_out.')->group(function() {
         Route::get('/', 'index')->name('index');
     });
     Route::prefix('/privacy_policy', PrivacyPolicyController::class)->name('privacy_policy');

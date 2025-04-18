@@ -28,24 +28,8 @@ input{
 *
 */
 
-.flash-message{
-    width: 90%;
-    margin: 60px auto;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid #fff;
-}
-
-/**
-*
-* ↑ 基本クラス
-*
-*/
-
 header{
     width: 100%;
-    height: 70px;
     padding: 12px 20px;
     display: flex;
     justify-content: center;
@@ -80,7 +64,6 @@ header .title a{
 header .auth-nav{
     width: fit-content;
     margin: auto 0 auto auto;
-    color: #fff;
 }
 header .auth-nav ul{
     display: flex;
@@ -90,7 +73,6 @@ header .auth-nav ul li{
     width: fit-content;
     margin: auto 8px;
     border-radius: 8px;
-    color: #fff;
 }
 header .auth-nav ul li a{
     width: fit-content;
@@ -158,21 +140,21 @@ header .nav {
     transition: transform .4s;
     z-index: 90;
 }
-
+  
 header .nav.active {
     transform: translateX(0);
 }
-
+  
 header .nav__list {
     margin: 0;
     padding: 100px 0 0;
     list-style: none;
 }
-
+  
 header .nav__item {
     padding: 0 20px;
 }
-
+  
 header .nav__link {
     display: block;
     padding: 15px 0;
@@ -184,7 +166,6 @@ header .nav__link {
 main {
     padding: 30px 0 30px 0;
     background-color: #222;
-    min-height: calc(100vh - 230px);
 }
 
 main .home__menu__container{
@@ -243,12 +224,12 @@ main .gest__container {
     width: 90vw;
     height: 100%;
     margin: 0 auto;
-    gap: 0 80px;
     display: flex;
     color: #fff;
 }
 main .gest__container .field__group {
     width: 100%;
+    padding: 40px;
 }
 main .gest__container .field__group .guidance__group {
     margin: 30px 0 0 0;
@@ -279,7 +260,7 @@ main .gest__container .field__group button {
 }
 main .gest__container .social__group {
     width: 100%;
-    /* padding: 40px; */
+    padding: 40px;
 }
 main .gest__container .social__group .social__button {
     width: 100%;
@@ -293,52 +274,49 @@ main .gest__container .social__group .social__button {
     color: #fff;
 }
 
-main .gest-title{
-    display: block;
-    width: fit-content;
-    margin: 30px auto;
-    color: #fff;
-}
-main .setting__container{
+main .work-out__container {
     width: 90vw;
     height: 100%;
     margin: 0 auto;
     color: #fff;
 }
 
-main .setting__container .title{
-    display: block;
-    margin: 0 0 30px 0;
+main .work-out__container .title {
+    margin: 0 0 20px 0;
 }
 
-main .setting__container .setting__group .setting__logout-button{
-    width: fit-content;
-    padding: 8px 16px;
-    border-radius: 10px;
-    background-color: #fff;
-    cursor: pointer;
-    border: none;
-}
-
-main .complete__container{
-    width: 90vw;
-    height: 100%;
-    margin: 0 auto;
-    color: #fff;
-    position: relative;
-}
-main .complete__container .complete__text {
-    width: fit-content;
-    display: block;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-}
-
-footer {
+main .work-out__container .work-out__group{
     width: 100%;
-    height: 100px;
+    display: flex;
+    gap: 30px 20px;
+    flex-wrap: wrap;
+}
+
+main .work-out__container .work-out__group .work-out__card{
+    width: 300px;
+    min-width: 300px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 20px;
+    height: 200px;
+}
+
+main .work-out__container .work-out__group .side-auto {
+    margin: 0 auto;
+}
+
+main .work-out__container .work-out__group .work-out__card .work-out__card__title{
+    font-weight: 600;
+}
+
+main .work-out__container .work-out__group .work-out__card .work-out__card__description{
+    margin: 10px 0 0 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+}
+footer {
     background-color: #111;
     padding: 30px 0;
     color: #fff;

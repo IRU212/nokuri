@@ -1,6 +1,7 @@
 <?php
 
 $header_list = [
+    ['link' => route('user.work_out.index'), 'label' => '筋トレメニュー'],
     ['link' => route('user.setting.index'), 'label' => '設定'],
 ];
 
