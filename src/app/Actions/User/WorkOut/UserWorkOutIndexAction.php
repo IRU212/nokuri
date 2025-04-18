@@ -9,7 +9,7 @@ final class UserWorkOutIndexAction
     public function __invoke()
     {
         return [
-            'work_outs' => WorkOut::query()->select(['id', 'name'])->display()->get(),
+            'work_outs' => WorkOut::query()->select(['id', 'name'])->display()->limit(9)->get(),
         ];
     }
 }
