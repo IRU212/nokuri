@@ -49,7 +49,7 @@ final class Header extends Component
     private function setHeaderList(): void
     {
         $this->header_list = [
-            ['link' => route('user.recommendation.muscle_training'), 'label' => 'おすすめの筋トレ', 'is_guest_display' => true],
+            ['link' => route('user.work_out.index'), 'label' => '筋トレ', 'is_guest_display' => true],
             ['link' => route('user.setting.index'), 'label' => '設定', 'is_guest_display' => false],
         ];
     }
