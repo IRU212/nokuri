@@ -20,6 +20,7 @@
 * PHP
 * Laravel
 * JavaScript
+* jQuery
 * Docker
 * Github Action
 

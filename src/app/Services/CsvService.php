@@ -4,11 +4,7 @@ namespace App\Services;
 
 final class CsvService
 {
-    private const HEADER_SPLICE_INDEX = 1;
-
     private readonly string $file_path;
-
-    private readonly string $file_content;
 
     public function __construct(string $file_path)
     {
@@ -17,12 +13,12 @@ final class CsvService
 
     public function convertFileToArray($is_cut_header = true): array
     {
-        $file_content_array_list = \explode("\n", $this->file_content);
+        $file_content_array_list = \file($this->file_path);
 
         $result = [];
 
         if ($is_cut_header) {
-            \array_splice($file_content_array_list, self::HEADER_SPLICE_INDEX);
+            $file_content_array_list = \array_splice($file_content_array_list, 1);
         }
         foreach ($file_content_array_list as $file_content_array_item) {
             $result[] = \explode(",", $file_content_array_item);
@@ -34,6 +30,5 @@ final class CsvService
     public function setFile(string $file_path): void
     {
         $this->file_path = $file_path;
-        $this->file_content = \file_get_contents($this->file_path);
     }
 }

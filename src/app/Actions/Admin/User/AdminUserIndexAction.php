@@ -6,18 +6,16 @@ use App\Models\User;
 
 final class AdminUserIndexAction
 {
-    public function __invoke()
+    public function __invoke(): array
     {
-        $result = [];
-
-        $user = new User();
-
-        $result['user_list_paginate'] = $user::query()
-            ->select(['id', 'nickname', 'email', 'status', 'created_at'])
+        $user_list_paginate = User::query()
+            ->select(['id', 'name', 'email', 'gender', 'status', 'created_at'])
             ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->paginate();
 
-        return $result;
+        return [
+            'user_list_paginate' => $user_list_paginate,
+        ];
     }
 }

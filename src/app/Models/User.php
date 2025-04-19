@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\UserStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,7 +21,6 @@ final class User extends Authenticatable
         'name',
         'email',
         'password',
-        'icon_image',
         'google_id',
         'prefecture'
     ];
@@ -36,15 +36,17 @@ final class User extends Authenticatable
     ];
 
     /**
-     * ユーザを新規登録します
+     * キャストする属性の取得
      *
-     * @param array $save_data
-     * @return self
+     * @return array<string, string>
      */
-    public function saveUser(array $save_data): self
+    protected function casts(): array
     {
-        $this->fill($save_data);
-        $this->save();
-        return $this;
+        return [
+            'status' => UserStatus::class,
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+        ];
     }
 }

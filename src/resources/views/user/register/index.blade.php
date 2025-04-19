@@ -26,9 +26,6 @@
             </div>
             <div class="social__group">
                 <a href="{{ route('user.socialite.auth.redirect') }}" class="social__button">Googleで新規登録</a>
-                <a href="" class="social__button">LINEで新規登録</a>
-                <a href="" class="social__button">Yahoo JAPAN IDで新規登録</a>
-                <a href="" class="social__button">Facebookで新規登録</a>
             </div>
         </section>
     </main>

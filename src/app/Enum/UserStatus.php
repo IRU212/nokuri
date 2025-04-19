@@ -2,11 +2,13 @@
 
 namespace App\Enum;
 
+use App\Enum\Layout\LayoutButtonColor;
+
 enum UserStatus: int
 {
-    case INACTIVE = 0;
     case ACTIVE = 1;
-    case RESET = 2;
+    case PASSWORD_RESET = 2;
+    case DELETED = 3;
 
     /**
      * ラベル
@@ -16,9 +18,25 @@ enum UserStatus: int
     public function label(): string
     {
         return match ($this) {
-            self::INACTIVE => '非アクティブ',
-            self::ACTIVE => 'アクティブ',
-            self::RESET => 'パスワードリセット',
+            self::ACTIVE            => 'アクティブ',
+            self::PASSWORD_RESET    => 'パスワードリセット',
+            self::DELETED           => '削除済み',
         };
+    }
+
+    /**
+     * スタイル
+     *
+     * @return string
+     */
+    public function badgeStyleClass():string
+    {
+        $layout_button_color_enum = LayoutButtonColor::class;
+
+        return match ($this) {
+            self::ACTIVE            => "badge badge-sm bg-gradient-{$layout_button_color_enum::SUCCESS->value}",
+            self::PASSWORD_RESET    => "badge badge-sm bg-gradient-{$layout_button_color_enum::WARNING->value}",
+            self::DELETED           => "badge badge-sm bg-gradient-{$layout_button_color_enum::PRIMARY->value}",
+        }; 
     }
 }

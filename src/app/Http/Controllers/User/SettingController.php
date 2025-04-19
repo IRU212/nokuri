@@ -19,7 +19,7 @@ final class SettingController extends Controller
     {
         $result = $action();
 
-        return view('user.setting.index',  $result);
+        return view('user.setting.index', $result);
     }
 
     /**

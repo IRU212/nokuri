@@ -38,6 +38,12 @@ final class Layout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.layout');
+        return view('components.user.layout');
+    }
+
+    public function addTimeStamp(string $path): string
+    {
+        $timestamp = now()->format('YmdHis');
+        return "{$path}?{$timestamp}";
     }
 }
