@@ -5,7 +5,6 @@ namespace App\View\Composers;
 use App\Enum\Gender;
 use App\Enum\Prefecture;
 use App\Helper\MetaHelper;
-use App\Repositories\UserRepository;
 use Illuminate\View\View;
 
 final class CommonComposer

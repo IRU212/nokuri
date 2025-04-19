@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Middleware\AccessMiddleware;
-use App\Http\Middleware\IsAdminAuthenticated;
-use App\Http\Middleware\IsGestAuthenticated;
-use App\Http\Middleware\IsUserIsAdminAuthenticated;
+use App\Http\Middleware\EnsureGestOfUser;
+use App\Http\Middleware\EnsureUserIsAuthenticated;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -19,6 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->use([
+            AccessMiddleware::class,
+        ]);
         $middleware->group('user', [
             \Illuminate\Cookie\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -26,19 +28,15 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
-            AccessMiddleware::class
         ]);
-
         $middleware->group('api', [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            // 'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ]);
-
         $middleware->alias([
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-    ]);
+            'Excel'                             => Maatwebsite\Excel\Facades\Excel::class,
+            'ensure_user_is_authenticated'      => EnsureUserIsAuthenticated::class,
+            'ensure_gest_of_user'               => EnsureGestOfUser::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

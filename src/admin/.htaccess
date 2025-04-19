@@ -19,7 +19,7 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 
-    AuthUserFile "/www/nokuri/src/admin/.htpasswd"
+    AuthUserFile "/home/nokuri/www/nokuri/src/admin/.htpasswd"
     AuthName "Please enter your ID and Password." 
     AuthType BASIC 
     require valid-user 
