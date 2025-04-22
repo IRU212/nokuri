@@ -2,7 +2,6 @@
 
 namespace App\Exports;
 
-use App\Enum\Prefecture;
 use App\Enum\UserStatus;
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -16,11 +15,10 @@ final class UserExport implements FromCollection, WithHeadings
     public function collection()
     {
         $result = User::query()
-            ->select(['id', 'name', 'nickname', 'email', 'prefecture', 'status'])
+            ->select(['id', 'name', 'nickname', 'email', 'prefecture_id', 'status'])
             ->orderBy('id')
             ->get()
             ->map(function ($user) {
-                $user->prefecture = Prefecture::tryFrom($user->prefecture)?->label();
                 $user->status = UserStatus::from($user->status)->label();
                 return $user;
             });

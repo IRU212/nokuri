@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PrefectureController;
 use App\Http\Controllers\Admin\UserController;
@@ -26,6 +27,9 @@ Route::name('admin.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::get('/{id}', 'edit')->name('edit');
+    });
+    Route::prefix('/admin_role')->name('admin_role.')->controller(AdminRoleController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
     });
     // アカウント
 });

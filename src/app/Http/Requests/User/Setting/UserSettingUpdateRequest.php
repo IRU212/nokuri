@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\User\Setting;
 
-use App\Enum\Prefecture;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Enum;
 
 final class UserSettingUpdateRequest extends FormRequest
 {
@@ -18,7 +16,7 @@ final class UserSettingUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'min:5', 'max:100'],
             'email' => ['required', 'email', 'exists:users,email'],
-            'prefecture' => ['nullable', new Enum(Prefecture::class)]
+            'prefecture' => ['nullable', 'exists:prefecture.id']
         ];
     }
 }

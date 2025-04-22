@@ -3,7 +3,7 @@
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <x-admin.navibar />
         <div class="container-fluid py-2">
-            <h3 class="mb-4 h4 font-weight-bolder">ユーザ 一覧</h3>
+            <h3 class="mb-4 h4 font-weight-bolder">都道府県 一覧</h3>
             <div class="row">
                 <div class="col-12">
                     <div class="card my-4">
@@ -39,7 +39,7 @@
                                                     <p class="text-xs text-secondary mb-0">{{ $prefecture->prefectural_capital }}</p>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
+                                                    <a href="{{ route('admin.prefecture.edit', ['id' => $prefecture->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
                                                 </td>
                                             </tr>
                                         @endforeach
