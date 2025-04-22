@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enum\Prefecture;
+use App\Models\Prefecture;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -14,11 +14,12 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+
         User::create([
             'name'  => 'テスト用アカウント',
             'email' => 'ryuuyapro@gmail.com',
             'password' => Hash::make('password0'),
-            'prefecture_id' => Prefecture::AICHI,
+            'prefecture_id' => rand(Prefecture::min('id'), Prefecture::max('id')),
         ]);
         User::factory()->count(50)->create();
     }

@@ -21,14 +21,15 @@ final class SocialiteLoginCallback
         $google_user_id = $google_user->getId();
 
         if ($user::where('google_id', $google_user_id)->exists()) {
-            $user_id = $user::query()
+            $user = $user::query()
                 ->where('google_id', $google_user_id)
                 ->where('deleted_at', null)
-                ->first()
-                ->id;
+                ->first();
         } else {
-            $this->saveUser($google_user, $google_user_id);
+            $user = $this->saveUser($google_user, $google_user_id);
         }
+
+        $user_id = $user->id;
 
         UserLoginService::login($user_id);
 
@@ -38,7 +39,7 @@ final class SocialiteLoginCallback
     /**
      * ユーザを登録します
      */
-    private function saveUser(\Laravel\Socialite\Contracts\User $google_user, int $google_user_id): User
+    private function saveUser(\Laravel\Socialite\Contracts\User $google_user, string $google_user_id): User
     {
         $user = new User();
         $user->name = $google_user->getName();
