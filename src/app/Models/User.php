@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Enum\UserStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -48,5 +50,13 @@ final class User extends Authenticatable
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',
         ];
+    }
+
+    /**
+     * ユーザーに関連している電話の取得
+     */
+    public function prefecture(): BelongsTo
+    {
+        return $this->belongsTo(Prefecture::class);
     }
 }

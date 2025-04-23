@@ -6,10 +6,23 @@ use App\Models\User;
 
 final class AdminUserIndexAction
 {
+    /**
+     * ユーザ一覧を取得します
+     *
+     * @return array
+     */
     public function __invoke(): array
     {
         $user_list_paginate = User::query()
-            ->select(['id', 'name', 'email', 'gender', 'status', 'created_at'])
+            ->select([
+                'users.id', 
+                'users.name', 
+                'users.email', 
+                'users.gender', 
+                'users.status', 
+                'users.prefecture_id', 
+                'users.created_at'
+            ])
             ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->paginate();

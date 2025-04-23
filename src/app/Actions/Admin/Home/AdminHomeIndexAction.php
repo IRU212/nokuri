@@ -13,8 +13,14 @@ final class AdminHomeIndexAction
      */
     public function __invoke(): array
     {
+        $user = new User();
+
+        $user_count = $user->query()->select("id")->where("deleted_at", null)->count();
+        $user_today_count = $user->query()->select("id")->where("deleted_at", null)->whereDate('created_at', today())->count();
+
         return [
-            'user_count' => User::query()->select("id")->where("deleted_at", null)->count(),
+            'user_count' => $user_count,
+            'user_today_count' => $user_today_count,
         ];
     }
 }

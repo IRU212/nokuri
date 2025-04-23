@@ -11,6 +11,13 @@ use Illuminate\View\Component;
 final class Header extends Component
 {
     /**
+     * ヘッダー項目
+     *
+     * @var array
+     */
+    public readonly array $header_list;
+
+    /**
      * 一般ユーザログイン判定
      *
      * @var bool
@@ -29,8 +36,22 @@ final class Header extends Component
      */
     public function __construct()
     {
+        $this->setHeaderList();
         $this->is_user_login_in = UserLoginService::is_login();
         $this->user = UserLoginService::user();
+    }
+
+    /**
+     * インスタンス変数にセットします
+     *
+     * @return void
+     */
+    private function setHeaderList(): void
+    {
+        $this->header_list = [
+            ['link' => route('user.work_out.index'), 'label' => '筋トレ', 'is_guest_display' => true],
+            ['link' => route('user.setting.index'), 'label' => '設定', 'is_guest_display' => false],
+        ];
     }
 
     /**

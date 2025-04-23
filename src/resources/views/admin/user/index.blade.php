@@ -13,7 +13,7 @@
                                     <thead>
                                         <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ユーザ名</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">権限</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">都道府県</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ステータス</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolderAuthor opacity-7">登録日</th>
                                         <th class="text-secondary opacity-7"></th>
@@ -34,7 +34,11 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <p class="text-xs text-secondary mb-0">{{ $user->role }}</p>
+                                                    <p class="text-xs text-secondary mb-0">
+                                                        <a href="{{ route('admin.prefecture.edit', ['id' => $user->prefecture?->id ]) }}">
+                                                            {{ $user->prefecture?->name }}
+                                                        </a>
+                                                    </p>
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     <span class="{{ $user->status->badgeStyleClass() }}">{{ $user->status->label() }}</span>

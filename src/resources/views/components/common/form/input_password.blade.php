@@ -9,6 +9,13 @@
         'border: #ccc solied 1px' => isset($value)
     ])
 >
-    <label class="form-label">{{ $label }}</label>
+    <label 
+        class="form-label" 
+        @style([
+            'color: #737373' => !empty($value)
+        ])
+    >
+        {{ $label }}
+    </label>
     <input type="password" name="{{ $name }}" value="{{ $value }}" class="form-control">
 </div>
