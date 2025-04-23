@@ -34,16 +34,23 @@ final class Layout extends Component
     }
 
     /**
+     * キャッシュ対策
+     * 
+     * @param string $path
+     * 
+     * @return string
+     */
+    public function addTimeStamp(string $path): string
+    {
+        $timestamp = now()->format('YmdHis');
+        return "{$path}?{$timestamp}";
+    }
+
+    /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
     {
         return view('components.user.layout');
-    }
-
-    public function addTimeStamp(string $path): string
-    {
-        $timestamp = now()->format('YmdHis');
-        return "{$path}?{$timestamp}";
     }
 }

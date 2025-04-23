@@ -302,8 +302,12 @@ main .gest-title{
 main .setting__container{
     width: 90vw;
     height: 100%;
-    margin: 0 auto;
+    margin: 30px auto 0 auto;
     color: #fff;
+}
+
+main .setting__container:first-child{
+    margin: 0 auto 0 auto;
 }
 
 main .setting__container .title{
@@ -384,6 +388,32 @@ main .setting__group{
     height: 100%;
     margin: 0 auto;
     color: #fff;
+}
+
+main .setting__group .setting-profile-filed {
+    margin: 20px 0 0 0;
+    max-width: 600px;
+}
+
+main .setting__group .setting-profile-filed label {
+    margin: 0 0 10px 0;
+    display: block;
+}
+
+main .setting__group .setting-profile-filed input {
+    padding: 10px;
+    outline: none;
+    border-radius: 10px;
+}
+
+main .setting__group .edit-button{
+    width: fit-content;
+    display: block;
+    margin: 20px 0 0 0;
+    padding: 6px 10px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
 }
 
 footer {
