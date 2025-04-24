@@ -29,7 +29,7 @@ final class UserPasswordResetPreStoreAction
         $password_reset_user->token = bin2hex(random_bytes(16));
         $password_reset_user->save();
 
-        $user->where('email', $request_email)->update(['status' => UserStatus::RESET]);
+        $user->where('email', $request_email)->update(['status' => UserStatus::PASSWORD_RESET]);
 
         PasswordResetMail::send(new PasswordResetMail($password_reset_user));
     }
