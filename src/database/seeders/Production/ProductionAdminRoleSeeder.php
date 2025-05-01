@@ -14,10 +14,12 @@ class ProductionAdminRoleSeeder extends Seeder
     public function run(): void
     {
         AdminRole::create([
-            'name' => 'マスタ'
+            'name' => 'マスタ',
+            'code' => '01',
         ]);
         AdminRole::create([
-            'name' => '一般'
+            'name' => '一般',
+            'code' => '02',
         ]);
     }
 }
