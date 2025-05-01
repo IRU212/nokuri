@@ -4,10 +4,13 @@ namespace Database\Seeders\Production;
 
 use App\Models\Prefecture;
 use App\Services\CsvService;
+use Database\Seeders\Traits\Insert;
 use Illuminate\Database\Seeder;
 
 class ProductionPrefecture extends Seeder
 {
+    use Insert;
+
     /**
      * Run the database seeds.
      * 
@@ -15,16 +18,10 @@ class ProductionPrefecture extends Seeder
      */
     public function run(): void
     {
-        $csv_sevice = new CsvService(storage_path('seeder_data/prefecture.csv'));
-        $csv_data_list_arr = $csv_sevice->convertFileToArray(is_cut_header: false);
+        $columns = ['id', 'code', 'name', 'prefectural_capital'];
+        $csv_data = (new CsvService(storage_path('seeder_data/prefecture.csv')))->convertFileToArray(is_cut_header: false);
+        $model = new Prefecture();
 
-        foreach ($csv_data_list_arr as $csv_data_arr) {
-            Prefecture::create([
-                'id'                    => $csv_data_arr[0],
-                'code'                  => $csv_data_arr[1],
-                'name'                  => $csv_data_arr[2],
-                'prefectural_capital'   => $csv_data_arr[3],
-            ]);
-        }
+        $this->insertArray($columns, $csv_data, $model);
     }
 }

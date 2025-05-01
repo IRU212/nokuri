@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'email' => fake()->email(),
             'password' => Hash::make('password0'),
             'status' => rand(1, 3),
-            'prefecture_id' => rand(1, 48),
+            'prefecture_id' => rand(1, 47),
         ];
     }
 }

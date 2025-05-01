@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enum\UserStatus;
+use App\Models\Traits\DateScope;
+use App\Models\Traits\DisplayScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -12,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
 final class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, DateScope, DisplayScope;
 
     /**
      * The attributes that are mass assignable.
