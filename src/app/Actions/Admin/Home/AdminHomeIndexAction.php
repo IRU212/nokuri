@@ -6,6 +6,13 @@ use App\Models\User;
 
 final class AdminHomeIndexAction
 {
+    private User $user_model;
+
+    public function __construct(User $user_model)
+    {
+        $this->user_model = $user_model;
+    }
+
     /**
      * ホーム画面のデータを取得します
      *
@@ -13,14 +20,9 @@ final class AdminHomeIndexAction
      */
     public function __invoke(): array
     {
-        $user = new User();
-
-        $user_count = $user->query()->select("id")->where("deleted_at", null)->count();
-        $user_today_count = $user->query()->select("id")->where("deleted_at", null)->whereDate('created_at', today())->count();
-
         return [
-            'user_count' => $user_count,
-            'user_today_count' => $user_today_count,
+            'user_count'        => $this->user_model->select("id")->display()->count(),
+            'user_today_count'  => $this->user_model->select("id")->display()->today()->count(),
         ];
     }
 }

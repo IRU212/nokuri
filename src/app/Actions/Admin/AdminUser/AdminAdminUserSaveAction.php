@@ -15,7 +15,6 @@ final class AdminAdminUserSaveAction
      */
     public function __invoke(AdminAdminUserSaveRequest $request): void
     {
-        $admin_user = new AdminUser();
-        $admin_user->saveAdminUser($request->validated());
+        (new AdminUser())->fill($request->validated())->save();
     }
 }

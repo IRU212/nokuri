@@ -16,8 +16,6 @@ final class AdminAdminUserUpdateAction
      */
     public function __invoke(int $admin_user_id, AdminAdminUserUpdateRequest $request): void
     {
-        $admin_user = AdminUser::query()->findOrFail($admin_user_id);
-        $admin_user->fill([]);
-        $admin_user->save();
+        AdminUser::findOrFail($admin_user_id)->fill($request->validated())->save();
     }
 }

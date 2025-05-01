@@ -14,6 +14,6 @@ final class AdminAdminUserEditAction
      */
     public function __invoke(int $admin_user_id): AdminUser
     {
-        return AdminUser::query()->findOrFail($admin_user_id);
+        return AdminUser::findOrFail($admin_user_id);
     }
 }
