@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name', 50)->comment('名前');
             $table->string('email')->unique()->comment('メールアドレス');
             $table->string('password')->nullable()->comment('パスワード');
-            $table->foreignId('prefecture_id')->constrained('prefecture')->nullable()->comment('都道府県ID');
+            $table->foreignId('prefecture_id')->constrained('prefectures')->nullable()->comment('都道府県ID');
             $table->unsignedInteger('municipalities_id')->nullable()->comment('市区町村');
             $table->unsignedTinyInteger('age')->nullable()->comment('年齢');
             $table->unsignedTinyInteger('height')->nullable()->comment('身長');

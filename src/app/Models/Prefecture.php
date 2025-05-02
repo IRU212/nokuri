@@ -28,11 +28,4 @@ final class Prefecture extends Model
             'deleted_at' => 'datetime',
         ];
     }
-
-    /**
-     * モデルと関連しているテーブル
-     *
-     * @var string
-     */
-    protected $table = 'prefecture';
 }
