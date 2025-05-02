@@ -20,30 +20,30 @@ class DatabaseSeeder extends Seeder
     private const LOCAL_SEEDER_LIST = [
         ProductionWorkOutSeeder::class,
         ProductionPrefecture::class,
+        ProductionAdminRoleSeeder::class,
         ProductionNewsSeeder::class,
         ProductionAdminUserSeeder::class,
         ProductionBannerSeeder::class,
-        ProductionAdminRoleSeeder::class,
         UserSeeder::class,
     ];
 
     private const STG_SEEDER_LIST = [
         ProductionWorkOutSeeder::class,
         ProductionPrefecture::class,
+        ProductionAdminRoleSeeder::class,
         ProductionNewsSeeder::class,
         ProductionAdminUserSeeder::class,
         ProductionBannerSeeder::class,
-        ProductionAdminRoleSeeder::class,
         UserSeeder::class,
     ];
 
     private const PRO_SEEDER_LIST = [
         ProductionWorkOutSeeder::class,
         ProductionPrefecture::class,
+        ProductionAdminRoleSeeder::class,
         ProductionNewsSeeder::class,
         ProductionAdminUserSeeder::class,
         ProductionBannerSeeder::class,
-        ProductionAdminRoleSeeder::class,
     ];
 
     /**
