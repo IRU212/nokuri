@@ -23,6 +23,14 @@ trait DateScope
     }
 
     /**
+     * 今週のデータを絞り込む絞り込む
+     */
+    public function scopeThisWeek(Builder $builder, string $column = 'created_at'): void
+    {
+        $builder->whereBetween($column, [now()->startOfWeek(), now()->endOfWeek()]);
+    }
+
+    /**
      * 明日のデータを絞り込む絞り込む
      */
     public function scopeTomorrow(Builder $builder, string $column = 'created_at'): void

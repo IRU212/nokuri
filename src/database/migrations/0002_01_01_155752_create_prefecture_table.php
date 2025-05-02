@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prefecture', function (Blueprint $table) {
+        Schema::create('prefectures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('prefecture_id')->constrained('prefecture')->comment('都道府県ID');
             $table->string('code', 4)->unique()->comment('コード');
             $table->string('name', 10)->comment('名前');
             $table->string('prefectural_capital', 10)->comment('県庁所在地');
