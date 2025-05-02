@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('admin_roles', function (Blueprint $table) {
             $table->id();
+            $table->string('code', 4)->unique()->comment('コード');
             $table->string('name', 20)->comment('名前');
             $table->datetime('created_at')->comment('作成日時');
             $table->dateTime('updated_at')->comment('更新日時');
