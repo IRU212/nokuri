@@ -2,7 +2,9 @@
 
 namespace App\Enum;
 
-enum Weather: string{
+use App\Contracts\EnumBaseInterface;
+
+enum Weather: int implements EnumBaseInterface {
     // 基本的な天気情報一覧
     case THUNDERSTORM       = 'Thunderstorm';
     case DRIZZLE            = 'Drizzle';

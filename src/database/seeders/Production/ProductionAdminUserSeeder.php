@@ -2,7 +2,6 @@
 
 namespace Database\Seeders\Production;
 
-use App\Enum\AdminUserRole;
 use App\Models\AdminRole;
 use App\Models\AdminUser;
 use Illuminate\Database\Seeder;
@@ -27,7 +26,16 @@ final class ProductionAdminUserSeeder extends Seeder
                 'name_mei' => '龍弥', 
                 'email' => 'ryuuyapro@gmail.com', 
                 'password' => $this->makePassword('ryuuya2121b'), 
-                'role' => AdminUserRole::MASTER
+                'role' => $admin_role_master_id,
+            ],
+            [
+                'id' => 2, 
+                'name' => '山田 太郎', 
+                'name_sei' => '山田', 
+                'name_mei' => '太郎', 
+                'email' => 'yamadatarou01@gmail.com', 
+                'password' => $this->makePassword('password0'), 
+                'role' => $admin_role_general_id,
             ],
         ];
         AdminUser::upsert($params, ['id'], ['updated_at']);

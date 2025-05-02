@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\DisplayScope;
 use App\Observers\AdminUserObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 #[ObservedBy([AdminUserObserver::class])]
 final class AdminUser extends Model
 {
-    use HasFactory;
+    use HasFactory, DisplayScope;
 
     /**
      * 複数代入可能な属性

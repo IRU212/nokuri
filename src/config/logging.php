@@ -147,6 +147,18 @@ return [
             'level'     => 'info',
             'days'      => 14,
         ],
+        'generate-google-drive-file-user-data' => [
+            'driver'    => 'daily',
+            'path'      => storage_path('logs/generate-google-drive-file-user-data/bath.log'),
+            'level'     => 'info',
+            'days'      => 14,
+        ],
+        'report-inquery-no-replay' => [
+            'driver'    => 'daily',
+            'path'      => storage_path('logs/report-inquery-no-replay/bath.log'),
+            'level'     => 'info',
+            'days'      => 14,
+        ],
     ],
 
 ];

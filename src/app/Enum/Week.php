@@ -4,8 +4,7 @@ namespace App\Enum;
 
 use App\Contracts\EnumBaseInterface;
 
-enum Week: int implements EnumBaseInterface
-{
+enum Week: int implements EnumBaseInterface {
     case SUNDAY = 1;
     case MONDAY = 2;
     case TUESDAY = 3;

@@ -2,10 +2,10 @@
 
 namespace App\Enum;
 
+use App\Contracts\EnumBaseInterface;
 use App\Enum\Layout\LayoutButtonColor;
 
-enum UserStatus: int
-{
+enum UserStatus: int implements EnumBaseInterface {
     case ACTIVE = 1;
     case PASSWORD_RESET = 2;
     case DELETED = 3;

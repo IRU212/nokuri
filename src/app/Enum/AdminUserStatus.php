@@ -2,8 +2,9 @@
 
 namespace App\Enum;
 
-enum AdminUserStatus: int
-{
+use App\Contracts\EnumBaseInterface;
+
+enum AdminUserStatus: int implements EnumBaseInterface {
     case INACTIVE = 0;
     case ACTIVE = 1;
 

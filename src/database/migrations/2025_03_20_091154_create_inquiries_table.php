@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email', 100)->comment('メールアドレス');
             $table->text('content', 500)->comment('内容');
             $table->foreignId('user_id')->constrained()->nullable()->comment('ユーザID');
+            $table->boolean('is_reply')->default(false)->comment('返信判定');
             $table->datetime('created_at')->comment('作成日時');
             $table->dateTime('updated_at')->comment('削除日時');
             $table->comment('問い合わせ');

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Enum\AdminUserRole;
+use App\Models\AdminRole;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -19,6 +19,7 @@ class AdminUserFactory extends Factory
      */
     public function definition(): array
     {
+        $admin_role = new AdminRole();
         $first_name = fake()->firstName();
         $last_name = fake()->lastName();
 
@@ -28,7 +29,7 @@ class AdminUserFactory extends Factory
             'name_mei' => $last_name,
             'email' => fake()->email(),
             'password' => Hash::make(Str::random(20) . 12),
-            'role' => $this->faker->randomElement(AdminUserRole::values())
+            'role' => rand($admin_role->min('id'), $admin_role->max('id'))
         ];
     }
 }
