@@ -6,6 +6,7 @@ use App\Enum\SpecificArea;
 use App\Models\WorkOut;
 use App\Services\CsvService;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Log;
 
 final class ProductionWorkOutSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ final class ProductionWorkOutSeeder extends Seeder
      */
     public function run(): void
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $csv_sevice = new CsvService(storage_path('seeder_data/work_out.csv'));
         $csv_data_list_arr = $csv_sevice->convertFileToArray();
 

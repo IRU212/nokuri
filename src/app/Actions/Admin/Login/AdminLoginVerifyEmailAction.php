@@ -5,8 +5,10 @@ namespace App\Actions\Admin\Login;
 use App\Enum\TokenByteLength;
 use App\Enum\TokenTime;
 use App\Http\Requests\Admin\News\AdminLoginVerifyEmailRequest;
+use App\Mail\AdminVerifyCodeMail;
 use App\Models\AdminVerifyCode;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 final class AdminLoginVerifyEmailAction
 {
@@ -16,26 +18,32 @@ final class AdminLoginVerifyEmailAction
      * メールの認証コードを発行します
      * 
      * @param AdminLoginVerifyEmailRequest $request
-     * @return void
+     * @return string
      */
-    public function __invoke(AdminLoginVerifyEmailRequest $request): void
+    public function __invoke(AdminLoginVerifyEmailRequest $request): string
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $email = $request->get('email');
 
         if (AdminVerifyCode::isCodeValid($email) === false) {
             $this->deleteAdminVerifyCode($email);
         }
         
-        $this->saveAdminVerifyCode($email);
+        $admin_verify_code = $this->saveAdminVerifyCode($email);
+
+        Mail::send(new AdminVerifyCodeMail($admin_verify_code));
+
+        return $admin_verify_code->token;
     }
 
     /**
      * 管理者認証コードを保存します
      * 
      * @param string $email
-     * @return void
+     * @return AdminVerifyCode
      */
-    private function saveAdminVerifyCode(string $email): void
+    private function saveAdminVerifyCode(string $email): AdminVerifyCode
     {
         $admin_verify_code = new AdminVerifyCode();
         $admin_verify_code->email = $email;
@@ -43,6 +51,7 @@ final class AdminLoginVerifyEmailAction
         $admin_verify_code->token = \bin2hex(\random_bytes(TokenByteLength::ADMIN_LOGIN->value));
         $admin_verify_code->token_deadline_at = now()->addMinute(TokenTime::ADMIN_LOGIN->value);
         $admin_verify_code->save();
+        return $admin_verify_code;
     }
 
     /**

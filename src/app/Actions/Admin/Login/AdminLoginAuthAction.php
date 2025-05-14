@@ -4,7 +4,9 @@ namespace App\Actions\Admin\Login;
 
 use App\Http\Requests\AdminLoginAuthRequest;
 use App\Models\AdminUser;
+use App\Models\AdminVerifyCode;
 use App\Services\AdminLoginService;
+use Illuminate\Support\Facades\Log;
 
 final class AdminLoginAuthAction
 {
@@ -16,10 +18,11 @@ final class AdminLoginAuthAction
      */
     public function __invoke(AdminLoginAuthRequest $request): void
     {
-        $admin_user = new AdminUser();
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
 
-        $admin_user_id = $admin_user::where('email', $request->input('email'))->first()->id;
+        $admin_verify_code_email = AdminVerifyCode::query()->firstWhere('token', $request->token)->email;
+        $admin_user = AdminUser::query()->firstWhere('email', $admin_verify_code_email);
 
-        AdminLoginService::login($admin_user_id);
+        AdminLoginService::login($admin_user->id);
     }
 }

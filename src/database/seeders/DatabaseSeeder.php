@@ -9,6 +9,7 @@ use Database\Seeders\Production\ProductionNewsSeeder;
 use Database\Seeders\Production\ProductionPrefecture;
 use Database\Seeders\Production\ProductionWorkOutSeeder;
 use Exception;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,8 @@ use Illuminate\Support\Facades\Log;
  */
 class DatabaseSeeder extends Seeder
 {
+    use WithoutModelEvents;
+
     private const LOCAL_SEEDER_LIST = [
         ProductionWorkOutSeeder::class,
         ProductionPrefecture::class,

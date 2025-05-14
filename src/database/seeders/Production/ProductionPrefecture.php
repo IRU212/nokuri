@@ -6,6 +6,7 @@ use App\Models\Prefecture;
 use App\Services\CsvService;
 use Database\Seeders\Traits\Insert;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Log;
 
 class ProductionPrefecture extends Seeder
 {
@@ -18,6 +19,8 @@ class ProductionPrefecture extends Seeder
      */
     public function run(): void
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $columns = ['id', 'code', 'name', 'prefectural_capital'];
         $csv_data = (new CsvService(storage_path('seeder_data/prefecture.csv')))->convertFileToArray(is_cut_header: false);
         $model = new Prefecture();

@@ -47,7 +47,8 @@ final class User extends Authenticatable
     protected function casts(): array
     {
         return [
-            'status' => UserStatus::class,
+            'password'   => 'hashed',
+            'status'     => UserStatus::class,
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
             'deleted_at' => 'datetime',

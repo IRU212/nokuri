@@ -6,6 +6,7 @@ use App\Models\AdminRole;
 use App\Models\AdminUser;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 final class ProductionAdminUserSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ final class ProductionAdminUserSeeder extends Seeder
      */
     public function run(): void
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $admin_role = new AdminRole();
         $admin_role_master_id  = $admin_role->query()->firstWhere('code', '01')->id;
         $admin_role_general_id = $admin_role->query()->firstWhere('code', '02')->id;
