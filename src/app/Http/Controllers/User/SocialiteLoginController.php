@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Actions\User\SocialiteLogin\SocialiteLoginCallback;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 final class SocialiteLoginController extends Controller
@@ -15,6 +16,8 @@ final class SocialiteLoginController extends Controller
      */
     public function redirect(): \Symfony\Component\HttpFoundation\RedirectResponse|\Illuminate\Http\RedirectResponse
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         return Socialite::driver("google")->redirect();
     }
 
@@ -26,6 +29,8 @@ final class SocialiteLoginController extends Controller
      */
     public function callback(SocialiteLoginCallback $action): \Illuminate\Http\RedirectResponse
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $action();
 
         return redirect(route('user.home.index'));

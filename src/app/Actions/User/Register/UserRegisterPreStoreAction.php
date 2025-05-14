@@ -5,6 +5,7 @@ namespace App\Actions\User\Register;
 use App\Http\Requests\User\Register\UserRegisterPreStoreRequest;
 use App\Mail\UserAuthenticationMail;
 use App\Models\UncertifiedUser;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 final class UserRegisterPreStoreAction
@@ -17,6 +18,8 @@ final class UserRegisterPreStoreAction
      */
     public function __invoke(UserRegisterPreStoreRequest $request): void
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $uncertified_user = new UncertifiedUser();
         $uncertified_user->fill($request->validated());
         $uncertified_user->token_deadline_at = now()->addMinute(30);

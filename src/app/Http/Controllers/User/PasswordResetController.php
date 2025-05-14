@@ -17,6 +17,8 @@ final class PasswordResetController extends Controller
      */
     public function index(): \Illuminate\Contracts\View\View
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         return view('user.password_reset.index');
     }
 
@@ -29,6 +31,8 @@ final class PasswordResetController extends Controller
      */
     public function preStore(UserPasswordResetPreStoreRequest $request, UserPasswordResetPreStoreAction $action): \Illuminate\Http\RedirectResponse
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $action($request);
 
         return redirect(route('user.password_reset.pre_complete'));
@@ -41,6 +45,8 @@ final class PasswordResetController extends Controller
      */
     public function preComplete(): \Illuminate\Contracts\View\View
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         return view('user.password_reset.pre_complete');
     }
 
@@ -53,6 +59,8 @@ final class PasswordResetController extends Controller
      */
     public function store(string $token, UserPasswordResetPreStoreAction $action): \Illuminate\Http\RedirectResponse
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         try {
             $action($token);
         } catch (MissTokenException $e) {

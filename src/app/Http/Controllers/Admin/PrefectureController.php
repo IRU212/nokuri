@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Prefecture;
+use Illuminate\Support\Facades\Log;
 
 final class PrefectureController extends Controller
 {
@@ -14,6 +15,8 @@ final class PrefectureController extends Controller
      */
     public function index(): \Illuminate\Contracts\View\View
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         return view('admin.prefecture.index', ['prefecture_list' => Prefecture::query()->display()->orderBy('code')->get()]);
     }
 
@@ -25,6 +28,8 @@ final class PrefectureController extends Controller
      */
     public function edit(int $id): \Illuminate\Contracts\View\View
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         return view('admin.prefecture.edit', ['prefecture' => Prefecture::query()->findOrFail($id)]);
     }
 }

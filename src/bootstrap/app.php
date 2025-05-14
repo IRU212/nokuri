@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Middleware\AccessMiddleware;
+use App\Http\Middleware\EnsureAdmin;
+use App\Http\Middleware\EnsureGestOfAdmin;
 use App\Http\Middleware\EnsureGestOfUser;
 use App\Http\Middleware\EnsureUserIsAuthenticated;
 use Illuminate\Foundation\Application;
@@ -34,7 +36,9 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->alias([
             'Excel'                             => Maatwebsite\Excel\Facades\Excel::class,
-            'ensure_user_is_authenticated'      => EnsureUserIsAuthenticated::class,
+            'ensure_admin'                      => EnsureAdmin::class,
+            'ensure_gest_of_admin'              => EnsureGestOfAdmin::class,
+            'ensure_user'                       => EnsureUserIsAuthenticated::class,
             'ensure_gest_of_user'               => EnsureGestOfUser::class,
         ]);
     })

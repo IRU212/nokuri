@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Enum\UserStatus;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
@@ -14,6 +15,8 @@ final class UserExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
+        Log::debug("ユーザ情報をエクスポートトします");
+
         $result = User::query()
             ->select(['id', 'name', 'nickname', 'email', 'prefecture_id', 'status'])
             ->orderBy('id')

@@ -16,15 +16,14 @@ final class SocialiteLoginCallback
      */
     public function __invoke(): void
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $user = new User();
         $google_user = Socialite::driver('google')->user();
         $google_user_id = $google_user->getId();
 
         if ($user::where('google_id', $google_user_id)->exists()) {
-            $user = $user::query()
-                ->where('google_id', $google_user_id)
-                ->where('deleted_at', null)
-                ->first();
+            $user = $user::query()->where('google_id', $google_user_id)->where('deleted_at', null)->first();
         } else {
             $user = $this->saveUser($google_user, $google_user_id);
         }
@@ -32,8 +31,6 @@ final class SocialiteLoginCallback
         $user_id = $user->id;
 
         UserLoginService::login($user_id);
-
-        Log::info("user_id:{$user_id},google_id:{$google_user_id}のユーザがログインしました");
     }
 
     /**

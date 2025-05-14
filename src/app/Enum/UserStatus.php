@@ -29,7 +29,7 @@ enum UserStatus: int implements EnumBaseInterface {
      *
      * @return string
      */
-    public function badgeStyleClass():string
+    public function badgeStyleClass(): string
     {
         $layout_button_color_enum = LayoutButtonColor::class;
 

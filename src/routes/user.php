@@ -46,7 +46,7 @@ Route::middleware('user')->name('user.')->group(function () {
     });
 
     // ユーザがログイン中
-    Route::middleware('ensure_user_is_authenticated')->group(function() {
+    Route::middleware('ensure_user')->group(function() {
         Route::prefix('/setting')->controller(SettingController::class)->name('setting.')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::post('/update', 'update')->name('update');

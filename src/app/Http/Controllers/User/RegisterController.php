@@ -18,6 +18,8 @@ final class RegisterController extends Controller
      */
     public function index(): \Illuminate\Contracts\View\View
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         return view('user.register.index');
     }
 
@@ -30,6 +32,8 @@ final class RegisterController extends Controller
      */
     public function preStore(UserRegisterPreStoreRequest $request, UserRegisterPreStoreAction $action): \Illuminate\Http\RedirectResponse
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $action($request);
 
         return redirect(route('user.register.pre_complete'));
@@ -42,6 +46,8 @@ final class RegisterController extends Controller
      */  
     public function preComplete(): \Illuminate\Contracts\View\View
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         return view('user.register.pre_complete');
     }
 
@@ -53,6 +59,8 @@ final class RegisterController extends Controller
      */
     public function store(string $token, UserRegisterStoreAction $action): \Illuminate\Http\RedirectResponse
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         try {
             $action($token);
         } catch (MissTokenException $e) {

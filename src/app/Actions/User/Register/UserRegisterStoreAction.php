@@ -7,6 +7,7 @@ use App\Models\UncertifiedUser;
 use App\Models\User;
 use App\Services\UserLoginService;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 final class UserRegisterStoreAction
 {
@@ -21,6 +22,8 @@ final class UserRegisterStoreAction
      */
     public function __invoke(string $token): void
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         if (\mb_strlen($token) !== self::TOKEN_LENGTH) {
             throw new MissTokenException(self::BAD_REQUEST_MESSAGE);
         }

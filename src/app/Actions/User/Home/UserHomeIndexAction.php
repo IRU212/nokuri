@@ -4,6 +4,7 @@ namespace App\Actions\User\Home;
 
 use App\Models\Banner;
 use App\Models\News;
+use Illuminate\Support\Facades\Log;
 
 final class UserHomeIndexAction
 {
@@ -14,6 +15,8 @@ final class UserHomeIndexAction
      */
     public function __invoke(): array
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         return [
             'news_list' => $this->getNewsArray(),
             'banners' => $this->getBannerArray(),

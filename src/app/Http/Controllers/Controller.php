@@ -16,6 +16,13 @@ abstract class Controller
         session()->flash($name, $message);
     }
 
+    /**
+     * APIレスポンス
+     * 
+     * @param array $data
+     * @param int $status
+     * @param array $headers
+     */
     protected function apiResponse(array $data = [], int $status = 200, array $headers = [])
     {
         return response()->json($data, $status, $headers);
