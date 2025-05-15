@@ -64,8 +64,7 @@ final class Sidebar extends Component
         $this->setSideBarItem('', '市区町村', $admin_sidebar_type::MASTER, $admin_sidebar_icon_type::TABLE_VIEW, false);
         // アカウント
         $this->setSideBarItem('', 'プロフィール', $admin_sidebar_type::ACCOUNT, $admin_sidebar_icon_type::PERSON, false);
-        $this->setSideBarItem('', 'ログイン', $admin_sidebar_type::ACCOUNT, $admin_sidebar_icon_type::LOGIN, false);
-        $this->setSideBarItem('', 'ログアウト', $admin_sidebar_type::ACCOUNT, $admin_sidebar_icon_type::LOGIN, false);
+        $this->setSideBarItem(route('admin.logout.clear_auth'), 'ログアウト', $admin_sidebar_type::ACCOUNT, $admin_sidebar_icon_type::LOGIN, true);
     }
 
     /**

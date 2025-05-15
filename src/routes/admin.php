@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\LogoutController;
 use App\Http\Controllers\Admin\PrefectureController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -19,7 +20,6 @@ Route::middleware('admin')->name('admin.')->group(function () {
         });
     });
     // ログイン
-
     Route::middleware('ensure_admin')->group(function() {
         // トランザクションデータ
         Route::prefix('/')->name('home.')->controller(HomeController::class)->group(function() {
@@ -45,5 +45,8 @@ Route::middleware('admin')->name('admin.')->group(function () {
             Route::get('/', 'index')->name('index');
         });
         // アカウント
+        Route::prefix('/logout')->name('logout.')->controller(LogoutController::class)->group(function() {
+            Route::get('/', 'clearAuth')->name('clear_auth');
+        });
     });
 });
