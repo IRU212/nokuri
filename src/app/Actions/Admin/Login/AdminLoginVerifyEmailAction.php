@@ -26,7 +26,8 @@ final class AdminLoginVerifyEmailAction
 
         $email = $request->get('email');
 
-        if (AdminVerifyCode::isCodeValid($email) === false) {
+        if (AdminVerifyCode::shouldDelete($email)) {
+            Log::info("管理者メール認証コードが有効期限を超えたため削除します");
             $this->deleteAdminVerifyCode($email);
         }
         
@@ -62,8 +63,6 @@ final class AdminLoginVerifyEmailAction
      */
     private function deleteAdminVerifyCode(string $email): void
     {
-        Log::info("管理者メール認証コードが有効期限を超えたため削除します");
-
         $admin_verify_code = new AdminVerifyCode();
         $admin_verify_code->where('email', $email);
         $admin_verify_code->delete();

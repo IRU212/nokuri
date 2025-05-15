@@ -32,19 +32,25 @@ final class AdminVerifyCode extends Model
     }
 
     /**
-     * コードが有効か判定を返します
+     * メールアドレスが有効か判定を返します
      * 
      * @param string $email
      * @return void
      */
-    public static function isCodeValid(string $email): bool
+    public static function shouldDelete(string $email): bool
     {
-        $token_deadline_at = self::query()->firstWhere('email', $email)?->token_deadline_at ?? throw new ModelNotFoundException();
+        $token_deadline_at = self::query()->firstWhere('email', $email)?->token_deadline_at;
+
+        if ($token_deadline_at === null) {
+            Log::info("対象のメールアドレスがNULLのため削除する必要なし");
+            return false;
+        }
 
         $now_datetime = now();
 
-        Log::info("コードが有効時間内か比較を行います > 現在時刻 : {$now_datetime} >= コード有効期限 : {$token_deadline_at}");
+        Log::info("コードが有効時間内か比較を行います > 現在時刻 : {$now_datetime}、 コード有効期限 : {$token_deadline_at}");
 
-        return $now_datetime->lte($token_deadline_at);
+        // 現在時刻 >= コード有効期限 (現在時刻の方が大きい場合は有効期限外なので削除する必要あり)
+        return $now_datetime->gte($token_deadline_at);
     }
 }
