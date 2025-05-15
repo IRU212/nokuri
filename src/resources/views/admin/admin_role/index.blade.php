@@ -18,20 +18,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($prefecture_list as $prefecture)
+                                        @foreach ($admin_roles as $admin_role)
                                             <tr>
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ $prefecture->id }}</h6>
+                                                            <h6 class="mb-0 text-sm">{{ $admin_role->id }}</h6>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <p class="text-xs text-secondary mb-0">{{ $prefecture->code }}</p>
+                                                    <p class="text-xs text-secondary mb-0">{{ $admin_role->name }}</p>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <a href="{{ route('admin.prefecture.edit', ['id' => $prefecture->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
+                                                    <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
                                                 </td>
                                             </tr>
                                         @endforeach
