@@ -26,7 +26,7 @@ final class AdminLoginAuthAction
         $admin_verify_code = AdminVerifyCode::query()->firstWhere('code', $code);
 
         if ($admin_verify_code->isValid() === false) {
-            throw new MissTokenException();
+            throw new MissTokenException('コードが有効期限切れです');
         }
 
         $admin_user = AdminUser::query()->firstWhere('email', $admin_verify_code->email);
