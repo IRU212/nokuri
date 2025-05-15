@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\PrefectureController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::name('admin.')->group(function () {
+Route::middleware('admin')->name('admin.')->group(function () {
     // 未ログイン
     Route::middleware('ensure_gest_of_admin')->group(function() {
         // ゲスト
@@ -19,6 +19,7 @@ Route::name('admin.')->group(function () {
         });
     });
     // ログイン
+
     Route::middleware('ensure_admin')->group(function() {
         // トランザクションデータ
         Route::prefix('/')->name('home.')->controller(HomeController::class)->group(function() {
