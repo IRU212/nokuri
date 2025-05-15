@@ -16,6 +16,7 @@ final class AdminVerifyCode extends Model
     protected $fillable = [
         'email',
         'code',
+        'token',
         'token_deadline_at',
     ];
 
