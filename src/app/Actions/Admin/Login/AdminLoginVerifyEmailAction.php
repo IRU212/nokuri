@@ -39,7 +39,7 @@ final class AdminLoginVerifyEmailAction
     }
 
     /**
-     * 管理者認証コードを保存します
+     * 管理者認証コードを取得、存在しない場合は登録します
      * 
      * @param string $email
      * @return AdminVerifyCode
@@ -67,9 +67,7 @@ final class AdminLoginVerifyEmailAction
      */
     private function deleteAdminVerifyCode(string $email): void
     {
-        $admin_verify_code = new AdminVerifyCode();
-        $admin_verify_code->where('email', $email);
-        $admin_verify_code->delete();
+        AdminVerifyCode::where('email', $email)->delete();
     }
 
     /**
