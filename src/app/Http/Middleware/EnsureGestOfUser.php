@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Services\UserLoginService;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnsureGestOfUser
@@ -16,6 +17,8 @@ class EnsureGestOfUser
      */
     public function handle(Request $request, Closure $next): Response
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         if (UserLoginService::is_login()) {
             return redirect(route('user.home.index'));
         }
