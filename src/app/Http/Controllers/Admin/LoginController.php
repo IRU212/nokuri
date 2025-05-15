@@ -7,7 +7,7 @@ use App\Actions\Admin\Login\AdminLoginVerifyEmailAction;
 use App\Actions\Admin\Login\AdminLoginVerifyEmailCodeAction;
 use App\Exceptions\MissTokenException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\News\AdminLoginVerifyEmailRequest;
+use App\Http\Requests\Admin\Login\AdminLoginVerifyEmailRequest;
 use Illuminate\Support\Facades\Log;
 
 final class LoginController extends Controller

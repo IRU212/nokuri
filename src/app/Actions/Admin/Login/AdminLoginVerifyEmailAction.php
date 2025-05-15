@@ -4,7 +4,7 @@ namespace App\Actions\Admin\Login;
 
 use App\Enum\TokenByteLength;
 use App\Enum\TokenTime;
-use App\Http\Requests\Admin\News\AdminLoginVerifyEmailRequest;
+use App\Http\Requests\Admin\Login\AdminLoginVerifyEmailRequest;
 use App\Mail\AdminVerifyCodeMail;
 use App\Models\AdminVerifyCode;
 use Illuminate\Support\Facades\Log;

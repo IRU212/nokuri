@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\News;
+namespace App\Http\Requests\Admin\Login;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,7 +14,8 @@ final class AdminLoginVerifyEmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'exists:admin_users,email'],
+            'password' => ['required', 'min:5', 'max:20'],
         ];
     }
 }
