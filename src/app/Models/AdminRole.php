@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\DisplayScope;
 use Illuminate\Database\Eloquent\Model;
 
 class AdminRole extends Model
 {
+    use DisplayScope;
+
     /**
      * 複数代入可能な属性
      *
