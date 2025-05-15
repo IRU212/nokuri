@@ -50,7 +50,7 @@ final class Sidebar extends Component
         $admin_sidebar_icon_type = AdminSidebarIconType::class;
 
         // デフォルト
-        $this->setSideBarItem(route('admin.home.index'), 'Dashboard', $admin_sidebar_type::NORMAL, $admin_sidebar_icon_type::DASHBOARD, true);
+        $this->setSideBarItem(route('admin.home.index'), 'ホーム', $admin_sidebar_type::NORMAL, $admin_sidebar_icon_type::DASHBOARD, true);
         $this->setSideBarItem(route('admin.user.index'), 'ユーザ', $admin_sidebar_type::NORMAL, $admin_sidebar_icon_type::TABLE_VIEW, true);
         $this->setSideBarItem('', '管理者', $admin_sidebar_type::NORMAL, $admin_sidebar_icon_type::TABLE_VIEW, false);
         $this->setSideBarItem('', 'バナー', $admin_sidebar_type::NORMAL, $admin_sidebar_icon_type::TABLE_VIEW, false);

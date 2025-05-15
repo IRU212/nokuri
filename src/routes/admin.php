@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\LogoutController;
 use App\Http\Controllers\Admin\PrefectureController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\WorkOutController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('admin')->name('admin.')->group(function () {
@@ -31,10 +32,8 @@ Route::middleware('admin')->name('admin.')->group(function () {
             Route::get('/{id}', 'edit')->name('edit');
         });
         // マスタデータ
-        Route::prefix('/work_out')->name('work_out.')->controller()->group(function() {
+        Route::prefix('/work_out')->name('work_out.')->controller(WorkOutController::class)->group(function() {
             Route::get('/', 'index')->name('index');
-            Route::get('/create', 'create')->name('create');
-            Route::get('/{id}', 'edit')->name('edit');
         });
         Route::prefix('/prefecture')->name('prefecture.')->controller(PrefectureController::class)->group(function () {
             Route::get('/', 'index')->name('index');
