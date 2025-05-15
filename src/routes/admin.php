@@ -14,7 +14,7 @@ Route::name('admin.')->group(function () {
         Route::prefix('/login')->name('login.')->controller(LoginController::class)->group(function() {
             Route::get('/', 'index')->name('index');
             Route::post('/verify_email', 'verifyEmail')->name('verify_email');
-            Route::get('/email_verification_complete', 'verifyEmailCode')->name('verify_email_code');
+            Route::get('/email_verification_code/{token}', 'verifyEmailCode')->name('verify_email_code');
             Route::post('/auth', 'auth')->name('auth');
         });
     });

@@ -39,10 +39,12 @@ final class AdminVerifyCode extends Model
      */
     public static function shouldDelete(string $email): bool
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $token_deadline_at = self::query()->firstWhere('email', $email)?->token_deadline_at;
 
         if ($token_deadline_at === null) {
-            Log::info("対象のメールアドレスがNULLのため削除する必要なし");
+            Log::info("対象のメールアドレスのデータがないため削除する必要なし");
             return false;
         }
 

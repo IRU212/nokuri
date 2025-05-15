@@ -31,7 +31,7 @@ final class AdminLoginVerifyEmailAction
             $this->deleteAdminVerifyCode($email);
         }
         
-        $admin_verify_code = $this->saveAdminVerifyCode($email);
+        $admin_verify_code = $this->firstOrCreateAdminVerifyCode($email);
 
         Mail::send(new AdminVerifyCodeMail($admin_verify_code));
 
@@ -44,14 +44,18 @@ final class AdminLoginVerifyEmailAction
      * @param string $email
      * @return AdminVerifyCode
      */
-    private function saveAdminVerifyCode(string $email): AdminVerifyCode
+    private function firstOrCreateAdminVerifyCode(string $email): AdminVerifyCode
     {
-        $admin_verify_code = new AdminVerifyCode();
-        $admin_verify_code->email = $email;
-        $admin_verify_code->code = $this->generateNumericCode(self::CODE_DIGITS);
-        $admin_verify_code->token = \bin2hex(\random_bytes(TokenByteLength::ADMIN_LOGIN->value));
-        $admin_verify_code->token_deadline_at = now()->addMinute(TokenTime::ADMIN_LOGIN->value);
-        $admin_verify_code->save();
+        $admin_verify_code = AdminVerifyCode::query()->firstOrCreate(
+            ['email' => $email],
+            [
+               'email' => $email,
+               'code' => $this->generateNumericCode(self::CODE_DIGITS),
+               'token' => \bin2hex(\random_bytes(TokenByteLength::ADMIN_LOGIN->value)),
+               'token_deadline_at' => now()->addMinute(TokenTime::ADMIN_LOGIN->value),
+            ]
+        );
+
         return $admin_verify_code;
     }
 
