@@ -33,7 +33,22 @@ final class AdminVerifyCode extends Model
     }
 
     /**
-     * メールアドレスが有効か判定を返します
+     * 有効か判定を返します
+     * 
+     * @return boolean
+     */
+    public function isValid(): bool
+    {
+        $now_datetime = now();
+
+        Log::info("コードが有効時間内か比較を行います > 現在時刻 : {$now_datetime}、 コード有効期限 : {$this->token_deadline_at}");
+
+        // 現在時刻 >= コード有効期限 (現在時刻の方が大きい場合は有効期限外なので削除する必要あり)
+        return $now_datetime->gte($this->token_deadline_at);
+    }
+
+    /**
+     * メールアドレスを削除するべきか判定します
      * 
      * @param string $email
      * @return void
@@ -42,18 +57,13 @@ final class AdminVerifyCode extends Model
     {
         Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
 
-        $token_deadline_at = self::query()->firstWhere('email', $email)?->token_deadline_at;
+        $admin_verify_code = self::query()->firstWhere('email', $email);
 
-        if ($token_deadline_at === null) {
+        if ($admin_verify_code === null) {
             Log::info("対象のメールアドレスのデータがないため削除する必要なし");
             return false;
         }
 
-        $now_datetime = now();
-
-        Log::info("コードが有効時間内か比較を行います > 現在時刻 : {$now_datetime}、 コード有効期限 : {$token_deadline_at}");
-
-        // 現在時刻 >= コード有効期限 (現在時刻の方が大きい場合は有効期限外なので削除する必要あり)
-        return $now_datetime->gte($token_deadline_at);
+        return $admin_verify_code->isValid();
     }
 }

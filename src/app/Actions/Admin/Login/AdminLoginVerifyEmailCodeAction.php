@@ -17,6 +17,9 @@ final class AdminLoginVerifyEmailCodeAction
     {
         Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
 
-        AdminVerifyCode::query()->firstWhere('token', $token)?->email ?? throw new MissTokenException();
+        $is_valid = AdminVerifyCode::firstWhere('token', $token)?->isValid() ?? throw new MissTokenException();
+        if ($is_valid === false) {
+            throw new MissTokenException();
+        }
     }
 }

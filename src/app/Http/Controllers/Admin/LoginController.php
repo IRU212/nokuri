@@ -7,6 +7,7 @@ use App\Actions\Admin\Login\AdminLoginVerifyEmailAction;
 use App\Actions\Admin\Login\AdminLoginVerifyEmailCodeAction;
 use App\Exceptions\MissTokenException;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Login\AdminLoginAuthRequest;
 use App\Http\Requests\Admin\Login\AdminLoginVerifyEmailRequest;
 use Illuminate\Support\Facades\Log;
 
@@ -67,11 +68,16 @@ final class LoginController extends Controller
      * @param AdminLoginAuthAction $action
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function auth(AdminLoginAuthAction $action): \Illuminate\Http\RedirectResponse
+    public function auth(AdminLoginAuthRequest $request, AdminLoginAuthAction $action): \Illuminate\Http\RedirectResponse
     {
         Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
 
-        $action();
+        try {
+            $action($request);
+        } catch (MissTokenException $e) {
+            Log::error($e->getMessage());
+            return redirect(route('admin.login.index'));
+        }
 
         return redirect(route('admin.home.index'));
     }

@@ -2,7 +2,8 @@
 
 namespace App\Actions\Admin\Login;
 
-use App\Http\Requests\AdminLoginAuthRequest;
+use App\Exceptions\MissTokenException;
+use App\Http\Requests\Admin\Login\AdminLoginAuthRequest;
 use App\Models\AdminUser;
 use App\Models\AdminVerifyCode;
 use App\Services\AdminLoginService;
@@ -20,8 +21,15 @@ final class AdminLoginAuthAction
     {
         Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
 
-        $admin_verify_code_email = AdminVerifyCode::query()->firstWhere('token', $request->token)->email;
-        $admin_user = AdminUser::query()->firstWhere('email', $admin_verify_code_email);
+        $code = $request->get('code');
+
+        $admin_verify_code = AdminVerifyCode::query()->firstWhere('code', $code);
+
+        if ($admin_verify_code->isValid() === false) {
+            throw new MissTokenException();
+        }
+
+        $admin_user = AdminUser::query()->firstWhere('email', $admin_verify_code->email);
 
         AdminLoginService::login($admin_user->id);
     }
