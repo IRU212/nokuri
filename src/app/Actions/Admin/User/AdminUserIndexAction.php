@@ -3,6 +3,7 @@
 namespace App\Actions\Admin\User;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 final class AdminUserIndexAction
 {
@@ -13,6 +14,8 @@ final class AdminUserIndexAction
      */
     public function __invoke(): array
     {
+        Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
+
         $user_list_paginate = User::query()
             ->select([
                 'users.id', 
