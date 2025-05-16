@@ -26,6 +26,12 @@ final class AdminLoginVerifyEmailAction
 
         $email = $request->get('email');
 
+        // 特定の閲覧用管理者ログインの場合のみ
+        if (\in_array($email, config('admin.ignore_login_code'))) {
+            Log::info("認証コード発行対象外の管理者でトークンを取得します");
+            return $this->updateAdminVerifyCodeToken($email)->token;
+        }
+
         if (AdminVerifyCode::shouldDelete($email)) {
             Log::info("管理者メール認証コードが有効期限を超えたため削除します");
             $this->deleteAdminVerifyCode($email);
@@ -36,6 +42,20 @@ final class AdminLoginVerifyEmailAction
         Mail::send(new AdminVerifyCodeMail($admin_verify_code));
 
         return $admin_verify_code->token;
+    }
+
+    /**
+     * 管理者認証コードのトークンを取得
+     * 
+     * @param string $email
+     * @return AdminVerifyCode
+     */
+    private function updateAdminVerifyCodeToken(string $email): AdminVerifyCode
+    {
+        $admin_verify_code = AdminVerifyCode::query()->firstWhere('email', $email);
+        $admin_verify_code->token = \bin2hex(\random_bytes(TokenByteLength::ADMIN_LOGIN->value));
+        $admin_verify_code->save();
+        return $admin_verify_code;
     }
 
     /**

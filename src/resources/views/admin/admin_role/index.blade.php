@@ -30,9 +30,11 @@
                                                 <td>
                                                     <p class="text-xs text-secondary mb-0">{{ $admin_role->name }}</p>
                                                 </td>
-                                                <td class="align-middle">
-                                                    <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
-                                                </td>
+                                                @can('is_master_edit')
+                                                    <td class="align-middle">
+                                                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
+                                                    </td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>

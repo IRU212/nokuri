@@ -59,7 +59,7 @@ final class Sidebar extends Component
         // マスタデータ
         $this->setSideBarItem('', 'ユーザ権限', $admin_sidebar_type::MASTER, $admin_sidebar_icon_type::TABLE_VIEW, false);
         $this->setSideBarItem(route('admin.admin_role.index'), '管理者権限', $admin_sidebar_type::MASTER, $admin_sidebar_icon_type::TABLE_VIEW, true);
-        $this->setSideBarItem('', '筋トレメニュー', $admin_sidebar_type::MASTER, $admin_sidebar_icon_type::TABLE_VIEW, false);
+        $this->setSideBarItem(route('admin.work_out.index'), '筋トレメニュー', $admin_sidebar_type::MASTER, $admin_sidebar_icon_type::TABLE_VIEW, true);
         $this->setSideBarItem(route('admin.prefecture.index'), '都道府県', $admin_sidebar_type::MASTER, $admin_sidebar_icon_type::TABLE_VIEW, true);
         $this->setSideBarItem('', '市区町村', $admin_sidebar_type::MASTER, $admin_sidebar_icon_type::TABLE_VIEW, false);
         // アカウント
