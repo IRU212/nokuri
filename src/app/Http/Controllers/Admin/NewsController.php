@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Admin\News\AdminNewsIndexAction;
 use App\Http\Controllers\Controller;
 
 final class NewsController extends Controller

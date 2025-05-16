@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Actions\Admin\News;
 
 use App\Models\News;
 use Illuminate\Support\Facades\Log;
