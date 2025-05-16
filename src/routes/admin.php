@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\LogoutController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PrefectureController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WorkOutController;
@@ -35,8 +36,11 @@ Route::middleware('admin')->name('admin.')->group(function () {
         Route::prefix('/admin_user')->name('admin_user.')->controller(AdminUserController::class)->group(function() {
             Route::get('/', 'index')->name('index');
         });
+        Route::prefix('/news')->name('news.')->controller(NewsController::class)->group(function() {
+            Route::get('/', 'index')->name('index');
+        });
         // マスタデータ
-        Route::prefix('/work_out')->name('work_out.')->controller(WorkOutController::class)->group(function() {
+        Route::prefix('/admin_role')->name('admin_role.')->controller(AdminRoleController::class)->group(function () {
             Route::get('/', 'index')->name('index');
         });
         Route::prefix('/prefecture')->name('prefecture.')->controller(PrefectureController::class)->group(function () {
@@ -44,7 +48,7 @@ Route::middleware('admin')->name('admin.')->group(function () {
             Route::get('/create', 'create')->name('create');
             Route::get('/{id}', 'edit')->name('edit');
         });
-        Route::prefix('/admin_role')->name('admin_role.')->controller(AdminRoleController::class)->group(function () {
+        Route::prefix('/work_out')->name('work_out.')->controller(WorkOutController::class)->group(function() {
             Route::get('/', 'index')->name('index');
         });
         // アカウント
