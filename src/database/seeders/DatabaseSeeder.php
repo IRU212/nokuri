@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Database\Seeders\Production\ProductionAdminRoleSeeder;
 use Database\Seeders\Production\ProductionAdminUserSeeder;
+use Database\Seeders\Production\ProductionAdminVerifyCodeSeeder;
 use Database\Seeders\Production\ProductionBannerSeeder;
 use Database\Seeders\Production\ProductionNewsSeeder;
 use Database\Seeders\Production\ProductionPrefecture;
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
         ProductionNewsSeeder::class,
         ProductionAdminUserSeeder::class,
         ProductionBannerSeeder::class,
+        ProductionAdminVerifyCodeSeeder::class,
         UserSeeder::class,
     ];
 
@@ -44,6 +46,7 @@ class DatabaseSeeder extends Seeder
         ProductionNewsSeeder::class,
         ProductionAdminUserSeeder::class,
         ProductionBannerSeeder::class,
+        ProductionAdminVerifyCodeSeeder::class,
         UserSeeder::class,
     ];
 
@@ -54,6 +57,7 @@ class DatabaseSeeder extends Seeder
         ProductionNewsSeeder::class,
         ProductionAdminUserSeeder::class,
         ProductionBannerSeeder::class,
+        ProductionAdminVerifyCodeSeeder::class,
     ];
 
     /**
