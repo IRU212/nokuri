@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('code', 4)->unique()->comment('コード');
             $table->string('name', 10)->comment('名前');
             $table->string('prefectural_capital', 10)->comment('県庁所在地');
+            $table->string('lat', 30)->comment('緯度');
+            $table->string('lon', 30)->comment('経度');
             $table->datetime('created_at')->comment('作成日時');
             $table->dateTime('updated_at')->comment('更新日時');
             $table->dateTime('deleted_at')->nullable()->comment('削除日時');
