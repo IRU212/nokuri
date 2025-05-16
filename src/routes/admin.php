@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminRoleController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\LogoutController;
@@ -30,6 +31,9 @@ Route::middleware('admin')->name('admin.')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::get('/{id}', 'edit')->name('edit');
+        });
+        Route::prefix('/admin_user')->name('admin_user.')->controller(AdminUserController::class)->group(function() {
+            Route::get('/', 'index')->name('index');
         });
         // マスタデータ
         Route::prefix('/work_out')->name('work_out.')->controller(WorkOutController::class)->group(function() {
