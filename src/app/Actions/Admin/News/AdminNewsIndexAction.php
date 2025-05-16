@@ -17,7 +17,7 @@ final class AdminNewsIndexAction
         Log::debug(__CLASS__ . '::' . __FUNCTION__ . ' called:(' . __LINE__ . ')');
 
         $news_paginate = News::query()
-            ->select(['news.id', 'news.name', 'news.email', 'news.created_at'])
+            ->select(['news.id', 'news.title', 'news.created_at'])
             ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->paginate();

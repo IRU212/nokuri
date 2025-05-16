@@ -21,15 +21,7 @@
                                         @foreach ($news_paginate as $news)
                                             <tr>
                                                 <td>
-                                                    <div class="d-flex px-2 py-1">
-                                                        <div>
-                                                            <img src="{{ asset('/img/team-2.jpg') }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                                                        </div>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ $news->name }}</h6>
-                                                            <p class="text-xs text-secondary mb-0">{{ $news->email }}</p>
-                                                        </div>
-                                                    </div>
+                                                    <p class="text-xs text-secondary mb-0">{{ $news->title }}</p>
                                                 </td>
                                                 <td class="align-middle text-center">
                                                     <span class="text-secondary text-xs font-weight-bold">{{ $news->created_at->format('Y-m-d') }}</span>
