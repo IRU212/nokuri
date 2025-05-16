@@ -15,6 +15,7 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">名称</th>
                                             <th class="text-secondary opacity-7"></th>
+                                            <th class="text-secondary opacity-7"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -30,11 +31,16 @@
                                                 <td>
                                                     <p class="text-xs text-secondary mb-0">{{ $admin_role->name }}</p>
                                                 </td>
-                                                @can('is_master_edit')
-                                                    <td class="align-middle">
+                                                <td class="align-middle">
+                                                    @can('is_master_view')
+                                                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">閲覧</a>
+                                                    @endif
+                                                </td>
+                                                <td class="align-middle">
+                                                    @can('is_master_edit')
                                                         <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
-                                                    </td>
-                                                @endif
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -34,11 +34,16 @@
                                                 <td>
                                                     <p class="text-xs text-secondary mb-0">{{ $work_out->main_specific_area->label() }}</p>
                                                 </td>
-                                                @can('is_master_edit')
-                                                    <td class="align-middle">
+                                                <td class="align-middle">
+                                                    @can('is_master_view')
+                                                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">閲覧</a>
+                                                    @endif
+                                                </td>
+                                                <td class="align-middle">
+                                                    @can('is_master_edit')
                                                         <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
-                                                    </td>
-                                                @endif
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

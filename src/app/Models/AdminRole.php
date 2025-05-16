@@ -15,7 +15,16 @@ class AdminRole extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'code',
     ];
+
+    /**
+     * 閲覧権限より大きい権限一覧配列
+     */
+    public function getViewRolesThan(): array
+    {
+        return [1, 2, 3, 4];
+    }
 }

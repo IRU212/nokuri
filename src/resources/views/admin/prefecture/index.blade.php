@@ -17,6 +17,7 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">都道府県</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">県庁所在地</th>
                                             <th class="text-secondary opacity-7"></th>
+                                            <th class="text-secondary opacity-7"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -39,7 +40,14 @@
                                                     <p class="text-xs text-secondary mb-0">{{ $prefecture->prefectural_capital }}</p>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <a href="{{ route('admin.prefecture.edit', ['id' => $prefecture->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
+                                                    @can('is_master_view')
+                                                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">閲覧</a>
+                                                    @endif
+                                                </td>
+                                                <td class="align-middle">
+                                                    @can('is_master_edit')
+                                                        <a href="{{ route('admin.prefecture.edit', ['id' => $prefecture->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
