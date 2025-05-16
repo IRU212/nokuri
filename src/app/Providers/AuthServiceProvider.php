@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Models\AdminRole;
-use App\Models\AdminUser;
 use App\Services\AdminLoginService;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;

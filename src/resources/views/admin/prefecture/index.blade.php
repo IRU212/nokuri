@@ -16,8 +16,12 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">コード</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">都道府県</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">県庁所在地</th>
-                                            <th class="text-secondary opacity-7"></th>
-                                            <th class="text-secondary opacity-7"></th>
+                                            @can('is_master_view')
+                                                <th class="text-secondary opacity-7"></th>
+                                            @endcan
+                                            @can('is_master_edit')
+                                                <th class="text-secondary opacity-7"></th>
+                                            @endcan
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -39,16 +43,16 @@
                                                 <td>
                                                     <p class="text-xs text-secondary mb-0">{{ $prefecture->prefectural_capital }}</p>
                                                 </td>
-                                                <td class="align-middle">
-                                                    @can('is_master_view')
+                                                @can('is_master_view')
+                                                    <td class="align-middle">
                                                         <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">閲覧</a>
-                                                    @endif
-                                                </td>
-                                                <td class="align-middle">
-                                                    @can('is_master_edit')
+                                                    </td>
+                                                @endcan
+                                                @can('is_master_edit')
+                                                    <td class="align-middle">
                                                         <a href="{{ route('admin.prefecture.edit', ['id' => $prefecture->id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
-                                                    @endif
-                                                </td>
+                                                    </td>
+                                                @endcan
                                             </tr>
                                         @endforeach
                                     </tbody>

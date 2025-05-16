@@ -15,7 +15,12 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">種目名</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">主に鍛えられる部位</th>
-                                            <th class="text-secondary opacity-7"></th>
+                                            @can('is_master_view')
+                                                <th class="text-secondary opacity-7"></th>
+                                            @endcan
+                                            @can('is_master_edit')
+                                                <th class="text-secondary opacity-7"></th>
+                                            @endcan
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -34,16 +39,16 @@
                                                 <td>
                                                     <p class="text-xs text-secondary mb-0">{{ $work_out->main_specific_area->label() }}</p>
                                                 </td>
-                                                <td class="align-middle">
-                                                    @can('is_master_view')
+                                                @can('is_master_view')
+                                                    <td class="align-middle">
                                                         <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">閲覧</a>
-                                                    @endif
-                                                </td>
-                                                <td class="align-middle">
-                                                    @can('is_master_edit')
+                                                    </td>
+                                                @endcan
+                                                @can('is_master_edit')
+                                                    <td class="align-middle">
                                                         <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">編集</a>
-                                                    @endif
-                                                </td>
+                                                    </td>
+                                                @endcan
                                             </tr>
                                         @endforeach
                                     </tbody>
