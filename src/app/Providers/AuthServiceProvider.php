@@ -10,7 +10,7 @@ use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    private int $admin_user_login_role;
+    private int|null $admin_user_login_role;
 
     /**
      * 初期化処理
